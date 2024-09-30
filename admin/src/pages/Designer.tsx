@@ -3,8 +3,8 @@ import { Box, Button, Field, IconButton, Tabs, Textarea } from "@strapi/design-s
 import { ArrowLeft } from "@strapi/icons";
 import { useNotification } from "@strapi/strapi/admin";
 import { isEmpty } from "lodash";
-import { StrictMode, useCallback, useEffect, useRef, useState } from "react";
-import EmailEditor, { EditorRef } from "react-email-editor";
+import { memo, StrictMode, useCallback, useEffect, useRef, useState } from "react";
+import { EditorRef, EmailEditor } from "react-email-editor";
 import { useNavigate, useParams } from "react-router-dom";
 import striptags from "striptags";
 import styled from "styled-components";
@@ -323,4 +323,4 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
   );
 };
 
-export default Designer;
+export default memo(Designer, shallowIsEqual);
