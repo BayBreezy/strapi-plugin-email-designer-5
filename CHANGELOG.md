@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.0.2
+
+[compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.1...v0.0.2)
+
+### 📦 Build
+
+- **changelog:** Sync changelog ([cbf4cf4](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/cbf4cf4))
+
+### 🏡 Chore
+
+- Export designer as default ([53aa7d4](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/53aa7d4))
+
+### ❤️ Contributors
+
+- Behon Baker ([@BayBreezy](http://github.com/BayBreezy))
+
 ## v0.0.1
 
 ### 🏡 Chore
