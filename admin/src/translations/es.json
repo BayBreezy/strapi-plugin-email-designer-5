@@ -1,0 +1,83 @@
+{
+  "page.title": "Diseñador de Correos (v5)",
+  "page.design.title": "Diseñador de Correos",
+  "page.subTitle": "Diseña correos electrónicos fácilmente desde el panel de administración de Strapi 5",
+  "plugin.name": "Diseñador de Correos 5",
+
+  "page.home.cta": "Crear un nuevo correo",
+  "page.home.cta.tooltip": "Haz clic para comenzar a crear un nuevo correo",
+
+  "designer.exportTemplates": "Exportar Plantillas",
+  "designer.importTemplates": "Importar Plantillas",
+  "error.loadingTemplates": "Ocurrió un error al cargar las plantillas de correo",
+
+  "input.label.templateReferenceId": "ID de Referencia de la Plantilla",
+  "input.placeholder.templateReferenceId": "Ej: 1",
+  "input.label.templateName": "Nombre de la Plantilla",
+  "input.placeholder.templateName": "Ej: Correo de Bienvenida",
+  "input.label.subject": "Asunto del Correo",
+  "input.placeholder.subject": "Ej: Bienvenido a nuestra plataforma",
+
+  "import": "Importar",
+  "pleaseWait": "Por favor, espera...",
+  "importingTemplates": "Estamos importando las plantillas de correo",
+  "error.importingTemplates": "Ocurrió un error al importar las plantillas",
+  "success.importingTemplates": "Las plantillas de correo se importaron con éxito",
+
+  "tooltip.copyTemplateId": "Copiar ID de la Plantilla",
+  "success.copyTemplateId": "ID de la plantilla copiada al portapapeles",
+
+  "noName": "Sin nombre",
+  "success": "Éxito",
+  "save": "Guardar",
+  "cancel": "Cancelar",
+  "confirm": "Confirmar",
+
+  "success.single.message": "La plantilla de correo se ha importado con éxito",
+  "success.message": "La plantilla de correo se ha guardado con éxito",
+  "success.duplicate": "La plantilla de correo se ha duplicado con éxito",
+  "success.delete": "La plantilla de correo se ha eliminado con éxito",
+
+  "confirm.title": "Confirmar Acción",
+  "confirm.singleImport": "¿Estás seguro de que deseas importar esta plantilla de correo? Esto reemplazará el diseño actual en el que estás trabajando.",
+  "confirm.import.message": "¿Estás seguro de que deseas importar estas plantillas de correo? Cualquier plantilla existente con el mismo ID de referencia será reemplazada.",
+  "confirm.duplicate.message": "¿Estás seguro de que deseas duplicar esta plantilla de correo?",
+  "confirm.delete.message": "¿Estás seguro de que deseas eliminar esta plantilla de correo?",
+
+  "error": "Error",
+  "error.message": "Ocurrió un error al guardar la plantilla de correo",
+  "error.duplicate": "Ocurrió un error al duplicar la plantilla de correo",
+  "error.delete": "Ocurrió un error al eliminar la plantilla de correo",
+
+  "tooltip.edit": "Editar esta plantilla de correo",
+  "tooltip.delete": "Eliminar esta plantilla de correo",
+  "tooltip.duplicate": "Duplicar esta plantilla de correo",
+
+  "goBack": "Regresar",
+
+  "designer.tab.html": "HTML",
+  "designer.tab.text": "Texto",
+
+  "table.header.name": "Nombre de la Plantilla",
+  "table.header.templateReferenceId": "ID de Referencia de la Plantilla",
+  "table.header.createdAt": "Creada en",
+  "table.header.updatedAt": "Actualizada en",
+  "table.header.coreEmailType": "Nombre del Correo Principal",
+
+  "table.action.edit": "Editar",
+  "table.action.delete": "Eliminar",
+
+  "emailTypes.core.tab.label": "Correos Principales",
+  "emailTypes.custom.tab.label": "Correos Personalizados",
+
+  "emailTypes.user-address-confirmation": "Confirmación de Dirección del Usuario",
+  "emailTypes.reset-password": "Restablecer Contraseña",
+  "user-address-confirmation": "Confirmación de Dirección del Usuario",
+  "reset-password": "Restablecer Contraseña",
+
+  "customTable.addDesign": "Haz clic para agregar un diseño",
+  "customTable.noDesigns": "Aún no tienes diseños disponibles",
+
+  "error.noReferenceId.title": "ID de Referencia Requerido",
+  "error.noReferenceId.message": "Por favor, proporciona un ID de referencia para la plantilla de correo"
+}

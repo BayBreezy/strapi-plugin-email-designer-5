@@ -1,0 +1,10 @@
+{
+  "endOfLine": "lf",
+  "tabWidth": 2,
+  "printWidth": 110,
+  "singleQuote": false,
+  "trailingComma": "es5",
+  "semi": true,
+  "useTabs": false,
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"]
+}

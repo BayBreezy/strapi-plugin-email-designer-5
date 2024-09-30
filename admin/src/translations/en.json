@@ -1,0 +1,83 @@
+{
+  "page.title": "Email Designer (v5)",
+  "page.design.title": "Email Designer",
+  "page.subTitle": "Easily design emails in your Strapi 5 admin panel",
+  "plugin.name": "Email Designer 5",
+
+  "page.home.cta": "Create a new email",
+  "page.home.cta.tooltip": "Click to start creating a new email",
+
+  "designer.exportTemplates": "Export Email Templates",
+  "designer.importTemplates": "Import Email Templates",
+  "error.loadingTemplates": "An error occurred while loading the email templates",
+
+  "input.label.templateReferenceId": "Template Reference ID",
+  "input.placeholder.templateReferenceId": "E.g. 1",
+  "input.label.templateName": "Template Name",
+  "input.placeholder.templateName": "E.g. Welcome Email",
+  "input.label.subject": "Email Subject",
+  "input.placeholder.subject": "E.g. Welcome to Our Platform",
+
+  "import": "Import",
+  "pleaseWait": "Please wait...",
+  "importingTemplates": "Importing email templates...",
+  "error.importingTemplates": "An error occurred during the import process",
+  "success.importingTemplates": "Email templates imported successfully",
+
+  "tooltip.copyTemplateId": "Copy Template ID",
+  "success.copyTemplateId": "Template ID copied to clipboard",
+
+  "noName": "No name",
+  "success": "Success",
+  "save": "Save",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+
+  "success.single.message": "The email template was imported successfully",
+  "success.message": "Email template saved successfully",
+  "success.duplicate": "Email template duplicated successfully",
+  "success.delete": "Email template deleted successfully",
+
+  "confirm.title": "Confirm Action",
+  "confirm.singleImport": "Are you sure you want to import this email template? This will replace the current design you are working on.",
+  "confirm.import.message": "Are you sure you want to import these email templates? Existing templates with the same reference ID will be replaced.",
+  "confirm.duplicate.message": "Are you sure you want to duplicate this email template?",
+  "confirm.delete.message": "Are you sure you want to delete this email template?",
+
+  "error": "Error",
+  "error.message": "An error occurred while saving the email template",
+  "error.duplicate": "An error occurred while duplicating the email template",
+  "error.delete": "An error occurred while deleting the email template",
+
+  "tooltip.edit": "Edit this email template",
+  "tooltip.delete": "Delete this email template",
+  "tooltip.duplicate": "Duplicate this email template",
+
+  "goBack": "Go Back",
+
+  "designer.tab.html": "HTML",
+  "designer.tab.text": "Text",
+
+  "table.header.name": "Template Name",
+  "table.header.templateReferenceId": "Template Reference ID",
+  "table.header.createdAt": "Created At",
+  "table.header.updatedAt": "Updated At",
+  "table.header.coreEmailType": "Core Email Name",
+
+  "table.action.edit": "Edit",
+  "table.action.delete": "Delete",
+
+  "emailTypes.core.tab.label": "Core Emails",
+  "emailTypes.custom.tab.label": "Custom Emails",
+
+  "emailTypes.user-address-confirmation": "User Address Confirmation",
+  "emailTypes.reset-password": "Password Reset",
+  "user-address-confirmation": "User Address Confirmation",
+  "reset-password": "Password Reset",
+
+  "customTable.addDesign": "Click to add a new design",
+  "customTable.noDesigns": "No designs available yet",
+
+  "error.noReferenceId.title": "Reference ID Required",
+  "error.noReferenceId.message": "Please provide a reference ID for the email template"
+}

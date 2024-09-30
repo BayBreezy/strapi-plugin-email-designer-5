@@ -1,0 +1,83 @@
+{
+  "page.title": "Concepteur d'Emails (v5)",
+  "page.design.title": "Concepteur d'Emails",
+  "page.subTitle": "Concevez facilement des emails dans votre panneau d'administration Strapi 5",
+  "plugin.name": "Concepteur d'Emails 5",
+
+  "page.home.cta": "Créer un nouvel email",
+  "page.home.cta.tooltip": "Cliquez pour commencer à créer un nouvel email",
+
+  "designer.exportTemplates": "Exporter les Modèles d'Emails",
+  "designer.importTemplates": "Importer les Modèles d'Emails",
+  "error.loadingTemplates": "Une erreur est survenue lors du chargement des modèles d'emails",
+
+  "input.label.templateReferenceId": "ID de Référence du Modèle",
+  "input.placeholder.templateReferenceId": "Ex : 1",
+  "input.label.templateName": "Nom du Modèle",
+  "input.placeholder.templateName": "Ex : Email de Bienvenue",
+  "input.label.subject": "Objet de l'Email",
+  "input.placeholder.subject": "Ex : Bienvenue sur notre plateforme",
+
+  "import": "Importer",
+  "pleaseWait": "Veuillez patienter...",
+  "importingTemplates": "Importation des modèles d'emails en cours...",
+  "error.importingTemplates": "Une erreur est survenue lors de l'importation",
+  "success.importingTemplates": "Les modèles d'emails ont été importés avec succès",
+
+  "tooltip.copyTemplateId": "Copier l'ID du Modèle",
+  "success.copyTemplateId": "ID du modèle copié dans le presse-papiers",
+
+  "noName": "Pas de nom",
+  "success": "Succès",
+  "save": "Enregistrer",
+  "cancel": "Annuler",
+  "confirm": "Confirmer",
+
+  "success.single.message": "Le modèle d'email a été importé avec succès",
+  "success.message": "Modèle d'email enregistré avec succès",
+  "success.duplicate": "Modèle d'email dupliqué avec succès",
+  "success.delete": "Modèle d'email supprimé avec succès",
+
+  "confirm.title": "Confirmer l'Action",
+  "confirm.singleImport": "Êtes-vous sûr de vouloir importer ce modèle d'email ? Cela remplacera le design actuel sur lequel vous travaillez.",
+  "confirm.import.message": "Êtes-vous sûr de vouloir importer ces modèles d'emails ? Les modèles existants avec le même ID de référence seront remplacés.",
+  "confirm.duplicate.message": "Êtes-vous sûr de vouloir dupliquer ce modèle d'email ?",
+  "confirm.delete.message": "Êtes-vous sûr de vouloir supprimer ce modèle d'email ?",
+
+  "error": "Erreur",
+  "error.message": "Une erreur est survenue lors de l'enregistrement du modèle d'email",
+  "error.duplicate": "Une erreur est survenue lors de la duplication du modèle d'email",
+  "error.delete": "Une erreur est survenue lors de la suppression du modèle d'email",
+
+  "tooltip.edit": "Modifier ce modèle d'email",
+  "tooltip.delete": "Supprimer ce modèle d'email",
+  "tooltip.duplicate": "Dupliquer ce modèle d'email",
+
+  "goBack": "Retour",
+
+  "designer.tab.html": "HTML",
+  "designer.tab.text": "Texte",
+
+  "table.header.name": "Nom du Modèle",
+  "table.header.templateReferenceId": "ID de Référence du Modèle",
+  "table.header.createdAt": "Créé le",
+  "table.header.updatedAt": "Mis à jour le",
+  "table.header.coreEmailType": "Nom de l'Email Principal",
+
+  "table.action.edit": "Modifier",
+  "table.action.delete": "Supprimer",
+
+  "emailTypes.core.tab.label": "Emails Principaux",
+  "emailTypes.custom.tab.label": "Emails Personnalisés",
+
+  "emailTypes.user-address-confirmation": "Confirmation de l'Adresse Utilisateur",
+  "emailTypes.reset-password": "Réinitialisation du Mot de Passe",
+  "user-address-confirmation": "Confirmation de l'Adresse Utilisateur",
+  "reset-password": "Réinitialisation du Mot de Passe",
+
+  "customTable.addDesign": "Cliquez pour ajouter un nouveau design",
+  "customTable.noDesigns": "Aucun design disponible pour le moment",
+
+  "error.noReferenceId.title": "ID de Référence Requis",
+  "error.noReferenceId.message": "Veuillez fournir un ID de référence pour le modèle d'email"
+}
