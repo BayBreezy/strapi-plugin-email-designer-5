@@ -1,8 +1,6 @@
 # Changelog
 
-
 ## v0.0.1
-
 
 ### 🏡 Chore
 
@@ -11,4 +9,3 @@
 ### ❤️ Contributors
 
 - Behon Baker ([@BayBreezy](http://github.com/BayBreezy))
-
