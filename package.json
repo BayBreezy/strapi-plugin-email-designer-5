@@ -99,7 +99,7 @@
   },
   "strapi": {
     "kind": "plugin",
-    "name": "strapi-plugin-email-designer-5",
+    "name": "email-designer-5",
     "displayName": "Email Designer 5",
     "description": "Strapi Email Designer (v5)"
   }

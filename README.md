@@ -300,7 +300,7 @@ export default ({ env }) => ({
     },
   },
   // This is the configuration for the Email Designer plugin
-  "strapi-plugin-email-designer-5": {
+  "email-designer-5": {
     enabled: true,
     // Your custom configuration here
     config: {
@@ -356,7 +356,7 @@ The backend uses Mustache to render the templates. You can visit the [Mustache d
 
 ## Programmatically Sending Emails
 
-You can send emails programmatically by using the `strapi-plugin-email-designer-5` plugin. Here is an example of how to send an email:
+You can send emails programmatically by using the `email-designer-5` plugin. Here is an example of how to send an email:
 
 > [!IMPORTANT]  
 > This is tested the `index.ts` file of the `src` folder of my strapi project.
@@ -383,7 +383,7 @@ export default {
   async bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {
     try {
       await strapi
-        .plugin("strapi-plugin-email-designer-5")
+        .plugin("email-designer-5")
         .service("email")
         .sendTemplatedEmail(
           {
@@ -445,7 +445,7 @@ You will probably use this one a lot.
 
 ```ts
 await strapi
-  .plugin("strapi-plugin-email-designer-5")
+  .plugin("email-designer-5")
   .service("email")
   .sendTemplatedEmail(EMAIL_OPTIONS_OBJECT, EMAIL_TEMPLATE_OBJECT, DATA);
 ```
@@ -455,7 +455,7 @@ await strapi
 I didn't get why this service was deprecated in the original plugin, but i found it useful for sending PDF data to my frontend.
 
 ```ts
-await strapi.plugin("strapi-plugin-email-designer-5").service("email").compose({ templateReferenceId, data });
+await strapi.plugin("email-designer-5").service("email").compose({ templateReferenceId, data });
 ```
 
 This returns the email HTML and Text with the data merged.

@@ -169,7 +169,7 @@ export default {
   validator() {},
   /** The name of the strapi plugin
    *
-   * @default "strapi-plugin-email-designer-5"
+   * @default "email-designer-5"
    */
-  pluginName: "strapi-plugin-email-designer-5",
+  pluginName: "email-designer-5",
 };
