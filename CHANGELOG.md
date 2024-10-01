@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.4
+
+[compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.3...v0.0.4)
+
+### 🩹 Fixes
+
+- Remove `strapi-plugin` from the plugin id/name ([9f96d19](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/9f96d19))
+
+### ❤️ Contributors
+
+- Behon Baker ([@BayBreezy](http://github.com/BayBreezy))
+
 ## v0.0.3
 
 [compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.2...v0.0.3)
