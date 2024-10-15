@@ -1,60 +1,62 @@
-# Strapi Email Designer (v5)
+<img src="/Email Designer Logo.jpg" style="height: 70px; margin: 0px; border-radius: 12px;" />
+
+# <img src="/Email Designer Logo.jpg" style="height: 26px; margin: 0px; border-radius: 4px;" /> Strapi Email Designer (v5)
 
 Design your own email templates directly from the Strapi admin panel and use the magic to send programmatically email from your controllers / services.
 
 ![Screenshot of an imported design](./imgs/design.jpeg)
 
-- [Strapi Email Designer (v5)](#strapi-email-designer-v5)
-  - [Credits](#credits)
-  - [Support Me](#support-me)
-  - [Version](#version)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Middleware Configuration](#middleware-configuration)
-  - [Plugin Configuration](#plugin-configuration)
-    - [Nodemailer](#nodemailer)
-    - [Default configuration](#default-configuration)
-  - [Usage](#usage)
-    - [Creating a new design](#creating-a-new-design)
-    - [Importing a design](#importing-a-design)
-    - [Exporting a design](#exporting-a-design)
-    - [Importing a Single Design](#importing-a-single-design)
-    - [Saving a design](#saving-a-design)
-  - [Mustache](#mustache)
-  - [Programmatically Sending Emails](#programmatically-sending-emails)
-  - [Available Services](#available-services)
-    - [Email Services](#email-services)
+- [ Strapi Email Designer (v5)](#-strapi-email-designer-v5)
+  - [❤️ Credits](#️-credits)
+  - [💸 Support Me](#-support-me)
+  - [⚙️ Version](#️-version)
+  - [✅ Prerequisites](#-prerequisites)
+  - [⬇️ Installation](#️-installation)
+  - [🎚️ Middleware Configuration](#️-middleware-configuration)
+  - [🎚️ Plugin Configuration](#️-plugin-configuration)
+    - [📧 Nodemailer](#-nodemailer)
+    - [⚙️ Default configuration](#️-default-configuration)
+  - [▶️ Usage](#️-usage)
+    - [✅ Creating a new design](#-creating-a-new-design)
+    - [✅ Importing a design](#-importing-a-design)
+    - [✅ Exporting a design](#-exporting-a-design)
+    - [✅ Importing a Single Design](#-importing-a-single-design)
+    - [✅ Saving a design](#-saving-a-design)
+  - [{ } Mustache](#--mustache)
+  - [💻 Programmatically Sending Emails](#-programmatically-sending-emails)
+  - [🚀 Available Services](#-available-services)
+    - [✅ Email Services](#-email-services)
       - [`sendTemplatedEmail`](#sendtemplatedemail)
       - [`compose`](#compose)
-  - [Contributing](#contributing)
-  - [License](#license)
-  - [Images](#images)
+  - [🛟 Contributing](#-contributing)
+  - [✍🏽 License](#-license)
+  - [🎆 Images](#-images)
 
-## Credits
+## ❤️ Credits
 
 Special thanks to:
 
 - [Unlayer](https://unlayer.com/) for the amazing email editor
 - [Strapi Plugin Email Designer](https://github.com/alexzaganelli/strapi-plugin-email-designer) for doing the heavy lifting for v3 and v4
 
-## Support Me
+## 💸 Support Me
 
 If you can 😊
 
 <a href="https://buymeacoffee.com/llehXIrI8g" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important" ></a>
 
-## Version
+## ⚙️ Version
 
 This plugin is compatible with Strapi v5.
 
 How plugins are structured in v5 is way different than v4, so I am not trying to make this plugin compatible with v4. Use the [Email Designer plugin here](https://github.com/alexzaganelli/strapi-plugin-email-designer) for v4.
 
-## Prerequisites
+## ✅ Prerequisites
 
 - Node v18+ (I recommend using [nvm](https://github.com/nvm-sh/nvm), there is a windows and mac/linux version)
 - A Strapi v5 project (`npx create-strapi-app@latest my-project`)
 
-## Installation
+## ⬇️ Installation
 
 Install the plugin by runnig the following command:
 
@@ -62,7 +64,7 @@ Install the plugin by runnig the following command:
 npm install strapi-plugin-email-designer-v5
 ```
 
-## Middleware Configuration
+## 🎚️ Middleware Configuration
 
 By default, Strapi's security is tight. You will need to add the following to your `config/middleware.ts` file:
 
@@ -84,7 +86,7 @@ By default, Strapi's security is tight. You will need to add the following to yo
 
 Ensure that you replace the `"strapi::security"` line in the file with the above.
 
-## Plugin Configuration
+## 🎚️ Plugin Configuration
 
 The plugin configuration accepts most of the properties that can be passed to the Unlayer editor. You can get more information about them here: https://docs.unlayer.com/docs/getting-started#configuration-options
 
@@ -112,7 +114,7 @@ export type EmailConfig = Pick<
 >;
 ```
 
-### Nodemailer
+### 📧 Nodemailer
 
 If you are going to send emails from the Strapi backend, you need to configure the email plugin. You can visit the docs [here](https://github.com/strapi/strapi/tree/main/packages/providers/email-nodemailer) to learn more
 
@@ -120,7 +122,7 @@ If you are going to send emails from the Strapi backend, you need to configure t
 npm install @strapi/provider-email-nodemailer --save
 ```
 
-### Default configuration
+### ⚙️ Default configuration
 
 Some options are passed by default to the editor. Expand the following object to see the default configuration:
 
@@ -322,39 +324,39 @@ export default ({ env }) => ({
 });
 ```
 
-## Usage
+## ▶️ Usage
 
 After installing & configuring your app for the plugin, you can access the email designer by navigating to the `Email Designer (v5)` section in the admin panel.
 
 ![Admin Area](./imgs/custom.png)
 
-### Creating a new design
+### ✅ Creating a new design
 
 Click on the `Create a new email` button to start a new design.
 
-### Importing a design
+### ✅ Importing a design
 
 You can import a set of designs that were exported by the platform by clicking on the `Import Email Templates` button located at the bottom right of the page.
 
-### Exporting a design
+### ✅ Exporting a design
 
 You can export all your designs by clicking the `Export Email Templates` button located at the bottom right of the page.
 
-### Importing a Single Design
+### ✅ Importing a Single Design
 
 When you start a new design, a button will be located in the top right called `Import` that allows you to import a single design. If the json file is valid Unlayer exported design, it will be imported into the editor.
 
-### Saving a design
+### ✅ Saving a design
 
 Once you are done editing your design, you can click on the `Save` button located at the top right of the page. The `Template Reference ID`, `Template Name`, & `Subject` fields are required to save the design.(Well not the last two lol)
 
 The `Template Reference ID` is a unique identifier for the design. It is used to reference the design when sending emails programmatically.
 
-## Mustache
+## { } Mustache
 
 The backend uses Mustache to render the templates. You can visit the [Mustache documentation](https://mustache.github.io/mustache.5.html) to learn more about how to use it.
 
-## Programmatically Sending Emails
+## 💻 Programmatically Sending Emails
 
 You can send emails programmatically by using the `email-designer-5` plugin. Here is an example of how to send an email:
 
@@ -433,11 +435,11 @@ This is what the email looked like in the MailDev client
 
 ![MailDev Test Results](./imgs/test-results.jpeg)
 
-## Available Services
+## 🚀 Available Services
 
 Here is a list of the services that the plugin provides. You can call upon them in your controllers or services(or wherever you want).
 
-### Email Services
+### ✅ Email Services
 
 #### `sendTemplatedEmail`
 
@@ -467,19 +469,19 @@ This returns the email HTML and Text with the data merged.
 }
 ```
 
-## Contributing
+## 🛟 Contributing
 
 I am SUPER new to React. I have been using Nuxt all my life. If you see where I could have done something better in the admin area, please let me know. I am open to suggestions.
 
 Just fork the repo, make your changes, and submit a PR. I will review it as soon as I can. I am open to learning new things.
 
-## License
+## ✍🏽 License
 
 MIT
 
 I mean, I am not the original author of the plugin. I just made it compatible with Strapi v5. So, I am not sure if I can license it. But, I will keep it MIT for now.
 
-## Images
+## 🎆 Images
 
 Image of the Core Tab in the Admin UI
 
