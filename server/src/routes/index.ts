@@ -53,4 +53,10 @@ export default [
     handler: "designer.saveCoreEmailType",
     config: { policies: [], auth: false },
   },
+  {
+    method: "GET",
+    path: "/download/:id",
+    handler: "designer.download",
+    config: { policies: [], auth: false },
+  },
 ];

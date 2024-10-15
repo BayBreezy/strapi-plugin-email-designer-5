@@ -137,6 +137,41 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
   },
 
   /**
+   * Downloads a template
+   */
+  download: async (ctx) => {
+    try {
+      const { id } = ctx.params;
+      const { type = "json" } = ctx.query;
+      // get the template by id
+      const template = await strapi.plugin(configImport.pluginName).service("template").findOne({ id });
+      if (!template) {
+        return ctx.notFound("Template not found");
+      }
+      let fileContent, fileName;
+      if (type === "json") {
+        // Serve JSON design
+        fileContent = JSON.stringify(template.design, null, 2);
+        fileName = `template-${id}.json`;
+        ctx.set("Content-Type", "application/json");
+      } else if (type === "html") {
+        // Serve HTML design
+        fileContent = template.bodyHtml;
+        fileName = `template-${id}.html`;
+        ctx.set("Content-Type", "text/html");
+      } else {
+        return ctx.badRequest('Invalid type, must be either "json" or "html".');
+      }
+      // Set the content disposition to prompt a file download
+      ctx.set("Content-Disposition", `attachment; filename="${fileName}"`);
+      ctx.send(fileContent);
+    } catch (err) {
+      strapi.log.error("Error downloading template:", err);
+      ctx.internalServerError("Failed to download the template");
+    }
+  },
+
+  /**
    * Strapi's core templates
    */
 
