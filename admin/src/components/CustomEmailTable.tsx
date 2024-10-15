@@ -20,12 +20,13 @@ import { EmptyPictures } from "@strapi/icons/symbols";
 import { useNotification } from "@strapi/strapi/admin";
 import dayjs from "dayjs";
 import { useCallback, useRef, useState } from "react";
+import { BsFiletypeHtml, BsFiletypeJson } from "react-icons/bs";
 import { FaHashtag } from "react-icons/fa6";
 import { LuCopyCheck } from "react-icons/lu";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { getUrl } from "../constants";
-import { deleteTemplate, duplicateTemplate, getTemplatesData } from "../services";
+import { deleteTemplate, downloadTemplate, duplicateTemplate, getTemplatesData } from "../services";
 import type { EmailTemplate } from "../types";
 import { getTranslation } from "../utils/getTranslation";
 import ImportExportActions from "./ImportExportActions";
@@ -34,7 +35,6 @@ const CustomEmailTable = ({ data = [], reload }: { data: EmailTemplate[]; reload
   const { formatMessage } = useIntl();
   const navigate = useNavigate();
   const { toggleNotification } = useNotification();
-  const emailTemplatesFileSelect = useRef<HTMLInputElement>(null);
 
   // State of duplicate modal
   const [duplicateConfirmationModal, setDuplicateConfirmationModal] = useState(false);
@@ -226,6 +226,20 @@ const CustomEmailTable = ({ data = [], reload }: { data: EmailTemplate[]; reload
                       onClick={() => navigate({ pathname: getUrl(`design/${entry.id}`) })}
                     >
                       <Pencil />
+                    </IconButton>
+
+                    <IconButton
+                      label={formatMessage({ id: getTranslation("tooltip.downloadHtml") })}
+                      onClick={() => downloadTemplate(entry.id, "html")}
+                    >
+                      <BsFiletypeHtml size={16} />
+                    </IconButton>
+
+                    <IconButton
+                      label={formatMessage({ id: getTranslation("tooltip.downloadDesign") })}
+                      onClick={() => downloadTemplate(entry.id, "json")}
+                    >
+                      <BsFiletypeJson size={16} />
                     </IconButton>
 
                     <IconButton
