@@ -52,6 +52,8 @@
   "tooltip.edit": "Edit this email template",
   "tooltip.delete": "Delete this email template",
   "tooltip.duplicate": "Duplicate this email template",
+  "tooltip.downloadHtml": "Download HTML",
+  "tooltip.downloadDesign": "Download Design(JSON)",
 
   "goBack": "Go Back",
 

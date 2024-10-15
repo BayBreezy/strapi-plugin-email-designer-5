@@ -52,6 +52,8 @@
   "tooltip.edit": "Editar esta plantilla de correo",
   "tooltip.delete": "Eliminar esta plantilla de correo",
   "tooltip.duplicate": "Duplicar esta plantilla de correo",
+  "tooltip.downloadHtml": "Descargar HTML",
+  "tooltip.downloadDesign": "Descargar Diseño(JSON)",
 
   "goBack": "Regresar",
 

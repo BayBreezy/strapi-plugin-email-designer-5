@@ -52,6 +52,8 @@
   "tooltip.edit": "Modifier ce modèle d'email",
   "tooltip.delete": "Supprimer ce modèle d'email",
   "tooltip.duplicate": "Dupliquer ce modèle d'email",
+  "tooltip.downloadHtml": "Télécharger HTML",
+  "tooltip.downloadDesign": "Télécharger la conception (JSON)",
 
   "goBack": "Retour",
 
