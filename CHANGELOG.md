@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.0.6
+
+[compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.5...v0.0.6)
+
+### 🚀 Enhancements
+
+- **export single templates:** Add button to core template table that allows downloading htm / json design ([19cecc5](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/19cecc5))
+- **export single templates:** Add function that downloads the file(html/json) ([d1c1725](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/d1c1725))
+- **export single templates:** Add translation for download html & json tooltip ([704654e](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/704654e))
+- **export single templates:** Add controller & route responsible for downloading the template ([99da92b](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/99da92b))
+
+### 📖 Documentation
+
+- Update readme ([7b851af](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/7b851af))
+
+### ❤️ Contributors
+
+- Behon Baker ([@BayBreezy](http://github.com/BayBreezy))
+
 ## v0.0.5
 
 [compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.4...v0.0.5)
