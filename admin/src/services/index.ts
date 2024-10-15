@@ -82,3 +82,39 @@ export const duplicateTemplate = async (id: string) => {
 export const deleteTemplate = async (id: string) => {
   await axios.delete(`/${pluginName}/templates/${id}`);
 };
+
+/**
+ * Download a based on the ID and the type passed in.
+ *
+ * This triggers a download of the file.
+ */
+export const downloadTemplate = async (id: string, type: "html" | "json") => {
+  const { data, headers } = await axios.get(`/${pluginName}/download/${id}?type=${type}`, {
+    responseType: "blob",
+  });
+
+  // Create a new Blob object using the response data
+  const blob = new Blob([data], { type: headers["content-type"] });
+
+  // Create a URL for the Blob
+  const downloadUrl = window.URL.createObjectURL(blob);
+
+  // Create a temporary <a> element to trigger the download
+  const link = document.createElement("a");
+  link.href = downloadUrl;
+
+  // Set the file name based on the content disposition header or fallback
+  const fileName =
+    headers["content-disposition"]?.split("filename=")[1]?.replace(/['"]/g, "") || `template.${type}`;
+  link.setAttribute("download", fileName);
+
+  // Append the link to the body (this is required for some browsers)
+  document.body.appendChild(link);
+
+  // Programmatically click the link to trigger the download
+  link.click();
+
+  // Clean up and remove the link after the download is triggered
+  link.remove();
+  window.URL.revokeObjectURL(downloadUrl);
+};
