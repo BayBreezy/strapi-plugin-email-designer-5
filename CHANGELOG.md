@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.0.7
+
+[compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.6...v0.0.7)
+
+### 📦 Build
+
+- **deps-dev:** Bump @strapi/strapi from 5.0.6 to 5.1.0 ([d03ec3a](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/d03ec3a))
+- **deps-dev:** Bump @types/lodash from 4.17.10 to 4.17.12 ([652f924](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/652f924))
+- **deps:** Bump react-intl from 6.8.0 to 6.8.1 ([3520322](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/3520322))
+- **deps-dev:** Bump @strapi/typescript-utils from 5.0.6 to 5.1.0 ([b8a67bf](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/b8a67bf))
+
+### 🏡 Chore
+
+- Bump deps ([0cd966b](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/0cd966b))
+- Bump deps ([f2bab97](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/f2bab97))
+
+### ❤️ Contributors
+
+- Behon Baker ([@BayBreezy](http://github.com/BayBreezy))
+
 ## v0.0.6
 
 [compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.5...v0.0.6)
