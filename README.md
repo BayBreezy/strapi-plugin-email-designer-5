@@ -61,7 +61,7 @@ How plugins are structured in v5 is way different than v4, so I am not trying to
 Install the plugin by runnig the following command:
 
 ```bash
-npm install strapi-plugin-email-designer-v5
+npm install strapi-plugin-email-designer-5
 ```
 
 ## 🎚️ Middleware Configuration
