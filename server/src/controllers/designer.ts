@@ -1,6 +1,6 @@
 import type { Core } from "@strapi/strapi";
 import { htmlToText } from "html-to-text";
-import _, { isNil } from "lodash";
+import _, { isEqual, isNil } from "lodash";
 import * as yup from "yup";
 import configImport from "../config";
 
@@ -98,10 +98,38 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
         if (!_.isEmpty(existingTemplate)) {
           return ctx.badRequest("Template reference ID is already taken");
         }
+        const oldTemplate = await strapi
+          .plugin(configImport.pluginName)
+          .service("template")
+          .findOne({ id: templateId });
+
         template = await strapi
           .plugin(configImport.pluginName)
           .service("template")
           .update({ id: templateId }, ctx.request.body);
+
+        // Check if any of the following changed: design, name, subject, bodyHtml, bodyText, tags
+
+        if (
+          !isEqual(oldTemplate.design, ctx.request.body.design) ||
+          oldTemplate.name !== ctx.request.body.name ||
+          oldTemplate.subject !== ctx.request.body.subject
+        ) {
+          // save the previous version of the template
+          await strapi
+            .documents(`plugin::${configImport.pluginName}.email-designer-template-version`)
+            .create({
+              data: {
+                templateId: oldTemplate.documentId,
+                design: oldTemplate.design,
+                name: oldTemplate.name,
+                subject: oldTemplate.subject,
+                bodyHtml: oldTemplate.bodyHtml,
+                bodyText: oldTemplate.bodyText,
+                tags: oldTemplate.tags,
+              },
+            });
+        }
       }
 
       ctx.send(template || {});

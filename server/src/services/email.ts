@@ -38,6 +38,7 @@ export const isValidEmailSchema = yup.string().test("is-valid-email", "Invalid e
 export const isTemplateReferenceIdSchema = yup.number().required().label("Template Reference Id").min(1);
 
 export const pluginUID = `plugin::${configImport.pluginName}.email-designer-template`;
+export const pluginVersionUID = `plugin::${configImport.pluginName}.email-designer-template-version`;
 
 export default ({ strapi }: { strapi: Core.Strapi }) => {
   /**

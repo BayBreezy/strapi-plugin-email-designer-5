@@ -6,7 +6,7 @@ const bootstrap = async ({ strapi }: { strapi: Core.Strapi }) => {
   const actions = [
     {
       section: "plugins",
-      displayName: "Allow access to the Email Designer interface",
+      displayName: "Access Email Designer",
       uid: "menu-link",
       pluginName: config.pluginName,
     },
