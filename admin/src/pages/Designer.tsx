@@ -5,7 +5,7 @@ import { useNotification } from "@strapi/strapi/admin";
 import { isEmpty } from "lodash";
 import { memo, StrictMode, useCallback, useEffect, useRef, useState } from "react";
 import { EditorRef, EmailEditor } from "react-email-editor";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import striptags from "striptags";
 import styled from "styled-components";
 import ImportSingleDesign from "../components/ImportSingleDesign";
@@ -44,6 +44,7 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
   const emailEditorRef = useRef<EditorRef>(null);
   const navigate = useNavigate();
   const translate = useTr();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const { templateId, coreEmailType } = useParams();
   const [templateData, setTemplateData] = useState<EmailTemplate>();
@@ -51,7 +52,10 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
   const [errorRefId, setErrorRefId] = useState("");
   const [bodyText, setBodyText] = useState("");
   // Sets the mode of the editor to either html, text, or history
-  const [mode, setMode] = useState<"html" | "text" | "history">("html");
+  const [mode, setMode] = useState<"html" | "text" | "history">(() => {
+    const tabParam = searchParams.get("tab");
+    return (tabParam as "html" | "text" | "history") || "html";
+  });
   // State to check if the server config has been loaded
   const [serverConfigLoaded, setServerConfigLoaded] = useState(false);
   // State to store the editor options passed from the server
@@ -290,6 +294,7 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
             value={mode}
             onValueChange={(selected: "html" | "text" | "history") => {
               setMode(selected);
+              setSearchParams({ tab: selected });
               if (selected === "html") {
                 init();
               } else if (selected === "text" && !bodyText && templateData?.bodyHtml) {
