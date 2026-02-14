@@ -1,5 +1,40 @@
 # Changelog
 
+## v0.0.8
+
+[compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.7...v0.0.8)
+
+### 🚀 Enhancements
+
+- Start implementing versioning ([db8475d](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/db8475d))
+
+### 🩹 Fixes
+
+- Cast email configuration as unknown before EmailConfig ([55570e7](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/55570e7))
+- Type annotation for exportHtml callback in Designer component ([60b117d](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/60b117d))
+
+### 📖 Documentation
+
+- Update readme's installation script ([008e562](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/008e562))
+
+### 📦 Build
+
+- **deps-dev:** Bump husky from 9.1.6 to 9.1.7 ([c7854b7](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/c7854b7))
+- **deps:** Bump react-intl from 6.8.7 to 7.0.1 ([08992b2](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/08992b2))
+
+### 🏡 Chore
+
+- **release:** V0.0.7 ([00b1017](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/00b1017))
+- Bump deps ([439d766](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/439d766))
+- Bump deps ([7d77ced](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/7d77ced))
+- Make admin routes separate from content api routes ([159ee5e](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/159ee5e))
+- Update dependencies and add lint-staged configuration ([3c9cf76](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/3c9cf76))
+- **docs:** Inform devs about paid unlayer features. closes #54 ([#54](https://github.com/BayBreezy/strapi-plugin-email-designer-5/issues/54))
+
+### ❤️ Contributors
+
+- Behon Baker ([@BayBreezy](https://github.com/BayBreezy))
+
 ## v0.0.7
 
 [compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.6...v0.0.7)
