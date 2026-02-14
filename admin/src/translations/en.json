@@ -32,6 +32,10 @@
   "save": "Save",
   "cancel": "Cancel",
   "confirm": "Confirm",
+  "actions": "Actions",
+  "action": "Action",
+  "action.restore": "Restore",
+  "action.delete": "Delete",
 
   "success.single.message": "The email template was imported successfully",
   "success.message": "Email template saved successfully",
@@ -81,5 +85,28 @@
   "customTable.noDesigns": "No designs available yet",
 
   "error.noReferenceId.title": "Reference ID Required",
-  "error.noReferenceId.message": "Please provide a reference ID for the email template"
+  "error.noReferenceId.message": "Please provide a reference ID for the email template",
+
+  "designer.tab.history": "History",
+  "versionHistory.noVersions": "No version history available",
+  "error.loadingVersions": "An error occurred while loading version history",
+  "error.restoreVersion": "An error occurred while restoring the version",
+  "error.deleteVersion": "An error occurred while deleting the version",
+  "success.versionRestored": "Version restored successfully",
+  "success.versionDeleted": "Version deleted successfully",
+  "confirm.restoreVersion.message": "Are you sure you want to restore this version? Your current changes will be saved as a new version.",
+  "confirm.deleteVersion.message": "Are you sure you want to delete this version?",
+  "tooltip.restore": "Restore to this version",
+  "tooltip.version.delete": "Delete this version",
+  "tooltip.compare": "Compare with current version",
+  "loading": "Loading...",
+  "close": "Close",
+
+  "versionCompare.title": "Compare Versions",
+  "versionCompare.comparing": "Comparing Version #{old} with Current Version",
+  "versionCompare.tab.design": "Design (JSON)",
+  "versionCompare.tab.html": "HTML",
+  "versionCompare.tab.text": "Text",
+  "versionCompare.tab.subject": "Subject",
+  "versionCompare.tab.name": "Name"
 }
