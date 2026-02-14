@@ -1,15 +1,13 @@
 import { Page } from "@strapi/admin/strapi-admin";
-import { Box, Button, Field, IconButton, Tabs, Textarea } from "@strapi/design-system";
-import { ArrowLeft } from "@strapi/icons";
 import { useNotification } from "@strapi/strapi/admin";
 import { isEmpty } from "lodash";
-import { memo, StrictMode, useCallback, useEffect, useRef, useState } from "react";
-import { EditorRef, EmailEditor } from "react-email-editor";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { EditorRef } from "react-email-editor";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import striptags from "striptags";
 import styled from "styled-components";
-import ImportSingleDesign from "../components/ImportSingleDesign";
-import VersionHistoryTab from "../components/VersionHistoryTab";
+import DesignerHeader from "../components/Designer/DesignerHeader";
+import DesignerTabsContainer from "../components/Designer/DesignerTabsContainer";
 import { getUrl, standardEmailRegistrationTemplate } from "../constants";
 import { useTr } from "../hooks/useTr";
 import { PLUGIN_ID } from "../pluginId";
@@ -20,7 +18,7 @@ import {
   getTemplateById,
   updateCoreTemplate,
 } from "../services";
-import { EmailConfig, EmailTemplate } from "../types";
+import { EmailTemplate } from "../types";
 import { shallowIsEqual } from "../utils/helpers";
 
 const DesignerContainer = styled.div`
@@ -31,36 +29,23 @@ const DesignerContainer = styled.div`
   gap: 10px;
 `;
 
-const Header = styled.div`
-  display: flex;
-  flex-shrink: 0;
-  width: 100%;
-  height: 60px;
-  align-items: center;
-  gap: 10px;
-`;
-
 const Designer = ({ isCore = false }: { isCore?: boolean }) => {
   const emailEditorRef = useRef<EditorRef>(null);
   const navigate = useNavigate();
   const translate = useTr();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { toggleNotification } = useNotification();
 
   const { templateId, coreEmailType } = useParams();
   const [templateData, setTemplateData] = useState<EmailTemplate>();
-  // Error state of the referenceId field
   const [errorRefId, setErrorRefId] = useState("");
   const [bodyText, setBodyText] = useState("");
-  // Sets the mode of the editor to either html, text, or history
   const [mode, setMode] = useState<"html" | "text" | "history">(() => {
     const tabParam = searchParams.get("tab");
     return (tabParam as "html" | "text" | "history") || "html";
   });
-  // State to check if the server config has been loaded
   const [serverConfigLoaded, setServerConfigLoaded] = useState(false);
-  // State to store the editor options passed from the server
-  const [editorOptions, setEditorOptions] = useState<EmailConfig>();
-  const { toggleNotification } = useNotification();
+  const [editorOptions, setEditorOptions] = useState<any>();
 
   const saveDesign = async () => {
     if (!coreEmailType && !templateData?.templateReferenceId) {
@@ -69,7 +54,7 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
         title: translate("error.noReferenceId.title"),
         message: translate("error.noReferenceId.message"),
       });
-      setErrorRefId("Required"); // trigger error on TextInput field
+      setErrorRefId("Required");
       return;
     }
     setErrorRefId("");
@@ -127,22 +112,15 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
           title: translate("error"),
           message: errorMessage,
         });
-      } else {
-        toggleNotification({
-          type: "danger",
-          title: translate("error"),
-          message: errorMessage,
-        });
       }
     }
   };
 
   const onLoadHandler = useCallback(() => {
-    // ⬇︎ workaround to avoid firing onLoad api before setting the editor ref
     setTimeout(() => {
       if (templateData) emailEditorRef.current?.editor?.loadDesign(templateData.design);
     }, 500);
-  }, []);
+  }, [templateData]);
 
   const init = async () => {
     if (
@@ -163,7 +141,6 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
     if (coreEmailType && isEmpty(_templateData.design)) {
       let _message = _templateData.message || "";
 
-      // eslint-disable-next-line no-useless-escape
       if (_templateData.message && _templateData.message.match(/\<body/)) {
         const parser = new DOMParser();
         const parsedDocument = parser.parseFromString(_message, "text/html");
@@ -171,7 +148,6 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
       }
 
       _message = striptags(_message, ["a", "img", "strong", "b", "i", "%", "%="])
-        // eslint-disable-next-line quotes
         .replace(/"/g, "'")
         .replace(/<%|&#x3C;%/g, "{{")
         .replace(/%>|%&#x3E;/g, "}}")
@@ -192,7 +168,7 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
       setServerConfigLoaded(true);
     });
     return () => {
-      emailEditorRef.current?.editor?.destroy(); // release react-email-editor on unmount
+      emailEditorRef.current?.editor?.destroy();
     };
   }, []);
 
@@ -204,7 +180,6 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
     setTimeout(() => {
       if (emailEditorRef.current?.editor && templateData?.design) {
         emailEditorRef.current.editor.loadDesign(templateData.design);
-        // set bodyText from the design
         emailEditorRef.current?.editor?.exportPlainText((data: any) => {
           setBodyText(data.text);
         });
@@ -212,146 +187,57 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
     }, 600);
   }, [templateData]);
 
+  const handleTabChange = (selected: "html" | "text" | "history") => {
+    setMode(selected);
+    setSearchParams({ tab: selected });
+    if (selected === "html") {
+      init();
+    }
+  };
+
   return (
     <Page.Main>
       <Page.Title>{translate("page.design.title")}</Page.Title>
       <DesignerContainer>
-        <Header>
-          <IconButton
-            style={{ marginTop: "19px", padding: "10px" }}
-            label={translate("goBack")}
-            onClick={() => navigate({ pathname: getUrl() })}
-          >
-            <ArrowLeft />
-          </IconButton>
+        <DesignerHeader
+          isCore={isCore}
+          coreEmailType={coreEmailType}
+          templateReferenceId={templateData?.templateReferenceId}
+          templateName={templateData?.name}
+          subject={templateData?.subject}
+          errorRefId={errorRefId}
+          emailEditorRef={emailEditorRef}
+          onTemplateReferenceIdChange={(value: any) =>
+            setTemplateData((state) => ({
+              ...(state || ({} as any)),
+              templateReferenceId:
+                value === ""
+                  ? ""
+                  : isFinite(parseInt(value))
+                    ? parseInt(value)
+                    : (state?.templateReferenceId ?? ""),
+            }))
+          }
+          onTemplateNameChange={(value: string) => setTemplateData((state) => ({ ...state, name: value }))}
+          onSubjectChange={(value: string) => setTemplateData((state) => ({ ...state, subject: value }))}
+          onSave={saveDesign}
+          onGoBack={() => navigate({ pathname: getUrl() })}
+        />
 
-          {!isCore && (
-            <Box style={{ width: "100%", maxWidth: "150px" }}>
-              <Field.Root required error={errorRefId}>
-                <Field.Label>{translate("input.label.templateReferenceId")}</Field.Label>
-                <Field.Input
-                  onChange={(e: any) =>
-                    setTemplateData((state) => ({
-                      ...(state || ({} as any)),
-                      templateReferenceId:
-                        e.target.value === ""
-                          ? ""
-                          : isFinite(parseInt(e.target.value))
-                            ? parseInt(e.target.value)
-                            : (state?.templateReferenceId ?? ""),
-                    }))
-                  }
-                  value={templateData?.templateReferenceId ?? ""}
-                  type="number"
-                  placeholder={translate("input.placeholder.templateReferenceId")}
-                />
-                <Field.Error />
-              </Field.Root>
-            </Box>
-          )}
-          <Box style={{ width: "100%" }}>
-            <Field.Root disabled={isCore} required>
-              <Field.Label>{translate("input.label.templateName")}</Field.Label>
-              <Field.Input
-                disabled={isCore}
-                value={
-                  isCore && coreEmailType
-                    ? translate(coreEmailType as "user-address-confirmation" | "reset-password")
-                    : templateData?.name || ""
-                }
-                onChange={(e: any) => {
-                  setTemplateData((state) => ({ ...state, name: e.target.value }));
-                }}
-                placeholder={translate("input.placeholder.templateName")}
-              />
-              <Field.Error />
-            </Field.Root>
-          </Box>
-          <Box style={{ width: "100%" }}>
-            <Field.Root required>
-              <Field.Label>{translate("input.label.subject")}</Field.Label>
-              <Field.Input
-                onChange={(value: any) => {
-                  setTemplateData((state) => ({ ...state, subject: value.target.value }));
-                }}
-                value={templateData?.subject || ""}
-                placeholder={translate("input.placeholder.subject")}
-              />
-              <Field.Error />
-            </Field.Root>
-          </Box>
-          <Box style={{ width: "100%", maxWidth: "100px" }}>
-            <ImportSingleDesign emailEditorRef={emailEditorRef} />
-          </Box>
-          <Box style={{ width: "100%", maxWidth: "100px" }}>
-            <Button onClick={() => saveDesign()} style={{ marginTop: "19px", height: "38px", width: "100%" }}>
-              {translate("save")}
-            </Button>
-          </Box>
-        </Header>
-        <Box style={{ flex: 1, display: "flex", height: "calc(100dvh - 80px)" }}>
-          <Tabs.Root
-            value={mode}
-            onValueChange={(selected: "html" | "text" | "history") => {
-              setMode(selected);
-              setSearchParams({ tab: selected });
-              if (selected === "html") {
-                init();
-              } else if (selected === "text" && !bodyText && templateData?.bodyHtml) {
-                // Generate text from HTML if bodyText is empty
-                emailEditorRef.current?.editor?.exportHtml((data: any) => {
-                  const tempDiv = document.createElement("div");
-                  tempDiv.innerHTML = data.html;
-                  setBodyText(tempDiv.textContent || tempDiv.innerText || "");
-                });
-              }
-            }}
-          >
-            <Tabs.List aria-label="Switch between the html, text and history design">
-              <Tabs.Trigger value="html">{translate("designer.tab.html")}</Tabs.Trigger>
-              <Tabs.Trigger value="text">{translate("designer.tab.text")}</Tabs.Trigger>
-              {!isCore && templateId !== "new" && (
-                <Tabs.Trigger value="history">{translate("designer.tab.history")}</Tabs.Trigger>
-              )}
-            </Tabs.List>
-            <Tabs.Content style={{ height: "calc(100vh - 160px)" }} value="html">
-              <Box
-                style={{
-                  minHeight: "540px",
-                  height: "100%",
-                }}
-              >
-                {serverConfigLoaded && (
-                  <StrictMode>
-                    <EmailEditor
-                      options={editorOptions}
-                      minHeight="100%"
-                      ref={emailEditorRef}
-                      onLoad={onLoadHandler}
-                    />
-                  </StrictMode>
-                )}
-              </Box>
-            </Tabs.Content>
-            <Tabs.Content style={{ height: "calc(100vh - 160px)", padding: "20px" }} value="text">
-              <Textarea
-                onChange={(e: any) => setBodyText(e.target.value)}
-                value={bodyText}
-                style={{ resize: "vertical" }}
-              />
-            </Tabs.Content>
-            {!isCore && templateId !== "new" && (
-              <Tabs.Content style={{ height: "calc(100vh - 160px)", overflow: "auto" }} value="history">
-                <VersionHistoryTab
-                  templateId={templateId || ""}
-                  onVersionRestore={() => {
-                    init();
-                  }}
-                />
-              </Tabs.Content>
-            )}
-          </Tabs.Root>
-        </Box>
+        <DesignerTabsContainer
+          mode={mode}
+          isCore={isCore}
+          templateId={templateId}
+          templateData={templateData}
+          bodyText={bodyText}
+          emailEditorRef={emailEditorRef}
+          editorOptions={editorOptions}
+          serverConfigLoaded={serverConfigLoaded}
+          onModeChange={handleTabChange}
+          onBodyTextChange={setBodyText}
+          onHTMLEditorLoad={onLoadHandler}
+          onVersionRestore={init}
+        />
       </DesignerContainer>
     </Page.Main>
   );
