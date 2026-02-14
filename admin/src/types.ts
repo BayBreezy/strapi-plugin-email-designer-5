@@ -33,3 +33,17 @@ export type EmailConfig = Pick<
   | "customJS"
   | "textDirection"
 >;
+
+export type Version = {
+  id: string;
+  versionNumber: number;
+  changedBy: string;
+  changesSummary: { changed?: string[] } | { restored: boolean; restoredFromVersion: number };
+  createdAt: Date | string;
+  updatedAt?: Date | string;
+  design?: any;
+  bodyHtml?: string | null;
+  bodyText?: string | null;
+  subject?: string | null;
+  name?: string | null;
+};
