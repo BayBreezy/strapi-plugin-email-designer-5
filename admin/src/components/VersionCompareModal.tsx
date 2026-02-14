@@ -1,4 +1,4 @@
-import { Box, Button, Dialog, Modal, Tabs, Typography } from "@strapi/design-system";
+import { Box, Modal, Tabs } from "@strapi/design-system";
 import { useState } from "react";
 import ReactDiffViewer, { DiffMethod } from "react-diff-viewer-continued";
 import { useIntl } from "react-intl";
