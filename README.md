@@ -90,6 +90,8 @@ Ensure that you replace the `"strapi::security"` line in the file with the above
 
 The plugin configuration accepts most of the properties that can be passed to the Unlayer editor. You can get more information about them here: https://docs.unlayer.com/docs/getting-started#configuration-options
 
+Important: Unlayer has paid features (for example, custom fonts) that require a paid plan. See the Unlayer docs for details: https://docs.unlayer.com/builder/installation
+
 This is the type definition for the configuration:
 
 ```ts
