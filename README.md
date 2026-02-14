@@ -500,3 +500,7 @@ Image of the Editor wit imported design
 Image of Email in MailDev
 
 ![Image of Email in MailDev](imgs/test-results.jpeg)
+
+Image of the Version Compare Modal
+
+![Image of the Version Compare Modal](imgs/diff.png)
