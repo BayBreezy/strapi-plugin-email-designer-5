@@ -115,18 +115,46 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
           oldTemplate.name !== ctx.request.body.name ||
           oldTemplate.subject !== ctx.request.body.subject
         ) {
+          // Track which fields changed
+          const changedFields = [];
+          if (!isEqual(oldTemplate.design, ctx.request.body.design)) changedFields.push("design");
+          if (oldTemplate.name !== ctx.request.body.name) changedFields.push("name");
+          if (oldTemplate.subject !== ctx.request.body.subject) changedFields.push("subject");
+          if (oldTemplate.bodyHtml !== ctx.request.body.bodyHtml) changedFields.push("bodyHtml");
+          if (oldTemplate.bodyText !== ctx.request.body.bodyText) changedFields.push("bodyText");
+          if (!isEqual(oldTemplate.tags, ctx.request.body.tags)) changedFields.push("tags");
+
+          // Get version count to calculate next version number
+          const versionCount = await strapi.db
+            .query(`plugin::${configImport.pluginName}.email-designer-template-version`)
+            .count({
+              where: { templateId },
+            });
+
+          // Get user ID from context if available
+          const userId = ctx.state.user?.id || "system";
+
+          // Get a fresh instance of the updated template to ensure we have the latest data (in case there are any lifecycle hooks that modify the data after update)
+          const updatedTemplate = await strapi
+            .plugin(configImport.pluginName)
+            .service("template")
+            .findOne({ id: templateId });
+
           // save the previous version of the template
           await strapi
             .documents(`plugin::${configImport.pluginName}.email-designer-template-version`)
             .create({
               data: {
-                templateId: oldTemplate.documentId,
-                design: oldTemplate.design,
-                name: oldTemplate.name,
-                subject: oldTemplate.subject,
-                bodyHtml: oldTemplate.bodyHtml,
-                bodyText: oldTemplate.bodyText,
-                tags: oldTemplate.tags,
+                templateId: updatedTemplate.id,
+                design: updatedTemplate.design,
+                name: updatedTemplate.name,
+                subject: updatedTemplate.subject,
+                bodyHtml: updatedTemplate.bodyHtml,
+                bodyText: updatedTemplate.bodyText,
+                tags: updatedTemplate.tags,
+                versionNumber: versionCount + 1,
+                changedBy: userId,
+                changesSummary: { changed: changedFields },
               },
             });
         }
