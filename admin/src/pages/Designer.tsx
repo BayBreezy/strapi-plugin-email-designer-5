@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import striptags from "striptags";
 import styled from "styled-components";
 import ImportSingleDesign from "../components/ImportSingleDesign";
+import VersionHistoryTab from "../components/VersionHistoryTab";
 import { getUrl, standardEmailRegistrationTemplate } from "../constants";
 import { useTr } from "../hooks/useTr";
 import { PLUGIN_ID } from "../pluginId";
@@ -49,8 +50,8 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
   // Error state of the referenceId field
   const [errorRefId, setErrorRefId] = useState("");
   const [bodyText, setBodyText] = useState("");
-  // Sets the mode of the editor to either html or text
-  const [mode, setMode] = useState<"html" | "text">("html");
+  // Sets the mode of the editor to either html, text, or history
+  const [mode, setMode] = useState<"html" | "text" | "history">("html");
   // State to check if the server config has been loaded
   const [serverConfigLoaded, setServerConfigLoaded] = useState(false);
   // State to store the editor options passed from the server
@@ -69,13 +70,16 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
     }
     setErrorRefId("");
 
-    let design, html, response;
+    let design, html, response, localBodyText;
 
     try {
       await new Promise<void>((resolve) => {
         emailEditorRef.current?.editor?.exportHtml((data: any) => {
           ({ design, html } = data);
-          resolve();
+          emailEditorRef.current?.editor?.exportPlainText((data: any) => {
+            localBodyText = data.text || "";
+            resolve();
+          });
         });
       });
     } catch (error) {
@@ -90,15 +94,16 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
           templateReferenceId: templateData?.templateReferenceId,
           subject: templateData?.subject || "",
           design,
-          bodyText,
+          bodyText: localBodyText,
           bodyHtml: html,
         });
       } else if (coreEmailType) {
         response = await updateCoreTemplate(coreEmailType, {
           subject: templateData?.subject || "",
-          design,
           message: html,
-          bodyText,
+          design,
+          bodyHtml: html,
+          bodyText: localBodyText,
         });
       }
 
@@ -195,6 +200,10 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
     setTimeout(() => {
       if (emailEditorRef.current?.editor && templateData?.design) {
         emailEditorRef.current.editor.loadDesign(templateData.design);
+        // set bodyText from the design
+        emailEditorRef.current?.editor?.exportPlainText((data: any) => {
+          setBodyText(data.text);
+        });
       }
     }, 600);
   }, [templateData]);
@@ -279,16 +288,26 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
         <Box style={{ flex: 1, display: "flex", height: "calc(100dvh - 80px)" }}>
           <Tabs.Root
             value={mode}
-            onValueChange={(selected: "html" | "text") => {
+            onValueChange={(selected: "html" | "text" | "history") => {
               setMode(selected);
               if (selected === "html") {
                 init();
+              } else if (selected === "text" && !bodyText && templateData?.bodyHtml) {
+                // Generate text from HTML if bodyText is empty
+                emailEditorRef.current?.editor?.exportHtml((data: any) => {
+                  const tempDiv = document.createElement("div");
+                  tempDiv.innerHTML = data.html;
+                  setBodyText(tempDiv.textContent || tempDiv.innerText || "");
+                });
               }
             }}
           >
-            <Tabs.List aria-label="Switch between the html and text design">
+            <Tabs.List aria-label="Switch between the html, text and history design">
               <Tabs.Trigger value="html">{translate("designer.tab.html")}</Tabs.Trigger>
               <Tabs.Trigger value="text">{translate("designer.tab.text")}</Tabs.Trigger>
+              {!isCore && templateId !== "new" && (
+                <Tabs.Trigger value="history">{translate("designer.tab.history")}</Tabs.Trigger>
+              )}
             </Tabs.List>
             <Tabs.Content style={{ height: "calc(100vh - 160px)" }} value="html">
               <Box
@@ -316,6 +335,16 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
                 style={{ resize: "vertical" }}
               />
             </Tabs.Content>
+            {!isCore && templateId !== "new" && (
+              <Tabs.Content style={{ height: "calc(100vh - 160px)", overflow: "auto" }} value="history">
+                <VersionHistoryTab
+                  templateId={templateId || ""}
+                  onVersionRestore={() => {
+                    init();
+                  }}
+                />
+              </Tabs.Content>
+            )}
           </Tabs.Root>
         </Box>
       </DesignerContainer>
