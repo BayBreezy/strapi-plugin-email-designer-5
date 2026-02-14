@@ -73,7 +73,7 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
 
     try {
       await new Promise<void>((resolve) => {
-        emailEditorRef.current?.editor?.exportHtml((data) => {
+        emailEditorRef.current?.editor?.exportHtml((data: any) => {
           ({ design, html } = data);
           resolve();
         });
