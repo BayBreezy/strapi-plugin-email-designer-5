@@ -80,6 +80,7 @@ const VersionCompareModal = ({ isOpen, onClose, oldVersion, newVersion }: Versio
                   useDarkTheme
                   leftTitle={`Version ${oldVersion.versionNumber}`}
                   rightTitle="Current Version"
+                  summary="Design changes"
                   compareMethod={DiffMethod.JSON}
                   showDiffOnly
                 />
@@ -94,6 +95,7 @@ const VersionCompareModal = ({ isOpen, onClose, oldVersion, newVersion }: Versio
                   leftTitle={`Version ${oldVersion.versionNumber}`}
                   compareMethod={DiffMethod.WORDS}
                   rightTitle="Current Version"
+                  summary="HTML changes"
                   showDiffOnly
                 />
               </Tabs.Content>
@@ -107,6 +109,7 @@ const VersionCompareModal = ({ isOpen, onClose, oldVersion, newVersion }: Versio
                   leftTitle={`Version ${oldVersion.versionNumber}`}
                   compareMethod={DiffMethod.WORDS}
                   rightTitle="Current Version"
+                  summary="Text changes"
                   showDiffOnly
                 />
               </Tabs.Content>
@@ -120,6 +123,7 @@ const VersionCompareModal = ({ isOpen, onClose, oldVersion, newVersion }: Versio
                   leftTitle={`Version ${oldVersion.versionNumber}`}
                   rightTitle="Current Version"
                   compareMethod={DiffMethod.WORDS}
+                  summary="Subject changes"
                   showDiffOnly={false}
                 />
               </Tabs.Content>
@@ -133,6 +137,7 @@ const VersionCompareModal = ({ isOpen, onClose, oldVersion, newVersion }: Versio
                   leftTitle={`Version ${oldVersion.versionNumber}`}
                   rightTitle="Current Version"
                   compareMethod={DiffMethod.WORDS}
+                  summary="Name changes"
                   showDiffOnly={false}
                 />
               </Tabs.Content>
