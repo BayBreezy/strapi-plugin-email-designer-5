@@ -63,6 +63,30 @@ export default {
         handler: "designer.download",
         config: { policies: [], auth: false },
       },
+      {
+        method: "GET",
+        path: "/templates/:templateId/versions",
+        handler: "version.getVersionHistory",
+        config: { policies: [], auth: false },
+      },
+      {
+        method: "GET",
+        path: "/templates/:templateId/versions/:versionId",
+        handler: "version.getVersion",
+        config: { policies: [], auth: false },
+      },
+      {
+        method: "POST",
+        path: "/templates/:templateId/versions/:versionId/restore",
+        handler: "version.restoreVersion",
+        config: { policies: [], auth: false },
+      },
+      {
+        method: "DELETE",
+        path: "/templates/:templateId/versions/:versionId",
+        handler: "version.deleteVersion",
+        config: { policies: [], auth: false },
+      },
     ],
   },
   // The content api routes
