@@ -69,6 +69,7 @@
     "html-to-text": "^9.0.5",
     "lodash": "^4.17.23",
     "mustache": "^4.2.0",
+    "react-diff-viewer-continued": "^4.1.2",
     "react-email-editor": "^1.7.11",
     "react-icons": "^5.5.0",
     "react-intl": "^6.8.9",
