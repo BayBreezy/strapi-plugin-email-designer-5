@@ -165,7 +165,7 @@ export default {
           },
         },
       },
-    }) as EmailConfig,
+    }) as unknown as EmailConfig,
   validator() {},
   /** The name of the strapi plugin
    *
