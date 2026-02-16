@@ -1,10 +1,8 @@
 import { Box, Field, IconButton } from "@strapi/design-system";
 import { ArrowLeft } from "@strapi/icons";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getUrl } from "../../constants";
 import { useTr } from "../../hooks/useTr";
-import ImportSingleDesign from "../ImportSingleDesign";
+import DesignerActionMenu from "./DesignerActionMenu";
 
 const Header = styled.div`
   display: flex;
@@ -21,6 +19,8 @@ interface DesignerHeaderProps {
   templateReferenceId?: number | string;
   templateName?: string;
   subject?: string;
+  bodyText?: string;
+  mode: "html" | "text" | "history";
   errorRefId: string;
   emailEditorRef: React.RefObject<any>;
   onTemplateReferenceIdChange: (value: number | string) => void;
@@ -36,6 +36,8 @@ const DesignerHeader = ({
   templateReferenceId,
   templateName,
   subject,
+  bodyText,
+  mode,
   errorRefId,
   emailEditorRef,
   onTemplateReferenceIdChange,
@@ -44,7 +46,6 @@ const DesignerHeader = ({
   onSave,
   onGoBack,
 }: DesignerHeaderProps) => {
-  const navigate = useNavigate();
   const translate = useTr();
 
   return (
@@ -101,30 +102,36 @@ const DesignerHeader = ({
         </Field.Root>
       </Box>
 
-      <Box style={{ width: "100%", maxWidth: "100px" }}>
-        <ImportSingleDesign emailEditorRef={emailEditorRef} />
-      </Box>
+      {/* Only show action menu button in HTML mode(Email editor is displayed) */}
+      {mode === "html" && (
+        <Box style={{ width: "fit-content", maxWidth: "100px", marginTop: "19px" }}>
+          <DesignerActionMenu emailEditorRef={emailEditorRef} subject={subject} bodyText={bodyText} />
+        </Box>
+      )}
 
-      <Box style={{ width: "100%", maxWidth: "100px" }}>
-        <button
-          onClick={onSave}
-          style={{
-            marginTop: "19px",
-            height: "38px",
-            width: "100%",
-            padding: "0 16px",
-            borderRadius: "4px",
-            backgroundColor: "#4945ff",
-            color: "white",
-            border: "none",
-            cursor: "pointer",
-            fontSize: "14px",
-            fontWeight: "500",
-          }}
-        >
-          {translate("save")}
-        </button>
-      </Box>
+      {/* Only show save button in HTML mode(Email editor is displayed) */}
+      {mode === "html" && (
+        <Box style={{ width: "100%", maxWidth: "100px" }}>
+          <button
+            onClick={onSave}
+            style={{
+              marginTop: "19px",
+              height: "38px",
+              width: "100%",
+              padding: "0 16px",
+              borderRadius: "4px",
+              backgroundColor: "#4945ff",
+              color: "white",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "14px",
+              fontWeight: "500",
+            }}
+          >
+            {translate("save")}
+          </button>
+        </Box>
+      )}
     </Header>
   );
 };

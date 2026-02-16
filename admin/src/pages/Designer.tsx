@@ -205,6 +205,8 @@ const Designer = ({ isCore = false }: { isCore?: boolean }) => {
           templateReferenceId={templateData?.templateReferenceId}
           templateName={templateData?.name}
           subject={templateData?.subject}
+          bodyText={bodyText}
+          mode={mode}
           errorRefId={errorRefId}
           emailEditorRef={emailEditorRef}
           onTemplateReferenceIdChange={(value: any) =>

@@ -1,5 +1,6 @@
 import type { Core } from "@strapi/strapi";
 import { htmlToText } from "html-to-text";
+import { Context } from "koa";
 import _, { isEqual, isNil } from "lodash";
 import * as yup from "yup";
 import configImport from "../config";
@@ -228,6 +229,65 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
   },
 
   /**
+   * Check email provider status
+   */
+  getEmailStatus: async (ctx) => {
+    const configured = strapi.plugin(configImport.pluginName).service("email").isEmailProviderConfigured();
+
+    ctx.send({ configured });
+  },
+
+  /**
+   * Get sample data for core email types
+   */
+  getSampleData: async (ctx: Context) => {
+    const { type } = ctx.params;
+
+    if (!["reset-password", "email-confirmation"].includes(type)) {
+      return ctx.badRequest("Invalid type. Must be 'reset-password' or 'email-confirmation'");
+    }
+
+    const sampleData = strapi
+      .plugin(configImport.pluginName)
+      .service("email")
+      .generateCoreEmailSampleData(type as "reset-password" | "email-confirmation");
+
+    ctx.send(sampleData);
+  },
+
+  /**
+   * Send a test email using the current editor content
+   */
+  testSend: async (ctx: Context) => {
+    const { to, subject, html, text, data } = ctx.request.body || {};
+
+    if (!to) {
+      return ctx.badRequest("Recipient email is required");
+    }
+
+    if (!html && !text) {
+      return ctx.badRequest("Email content is required");
+    }
+
+    const safeData = data && typeof data === "object" ? data : {};
+
+    try {
+      await strapi
+        .plugin(configImport.pluginName)
+        .service("email")
+        .sendTestEmail({ to }, { subject, html, text }, safeData);
+
+      ctx.send({ sent: true });
+    } catch (error: any) {
+      if (error?.message === "Email provider not configured") {
+        return ctx.badRequest("Email provider not configured");
+      }
+
+      ctx.badRequest(error?.message || "Failed to send test email");
+    }
+  },
+
+  /**
    * Strapi's core templates
    */
 
@@ -236,7 +296,7 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
    *
    * @return {Object}
    */
-  getCoreEmailType: async (ctx) => {
+  getCoreEmailType: async (ctx: Context) => {
     const { coreEmailType } = ctx.params;
     if (!["user-address-confirmation", "reset-password"].includes(coreEmailType))
       return ctx.badRequest("No valid core message key");
@@ -279,7 +339,7 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
    *
    * @return {Object}
    */
-  saveCoreEmailType: async (ctx) => {
+  saveCoreEmailType: async (ctx: Context) => {
     const { coreEmailType } = ctx.params;
     if (!["user-address-confirmation", "reset-password"].includes(coreEmailType))
       return ctx.badRequest("No valid core message key");

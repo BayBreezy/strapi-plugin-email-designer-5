@@ -65,6 +65,24 @@ export default {
       },
       {
         method: "GET",
+        path: "/email/status",
+        handler: "designer.getEmailStatus",
+        config: { policies: [], auth: false },
+      },
+      {
+        method: "GET",
+        path: "/email/sample-data/:type",
+        handler: "designer.getSampleData",
+        config: { policies: [], auth: false },
+      },
+      {
+        method: "POST",
+        path: "/email/test-send",
+        handler: "designer.testSend",
+        config: { policies: [], auth: false },
+      },
+      {
+        method: "GET",
         path: "/templates/:templateId/versions",
         handler: "version.getVersionHistory",
         config: { policies: [], auth: false },

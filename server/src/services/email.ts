@@ -41,19 +41,11 @@ export const pluginUID = `plugin::${configImport.pluginName}.email-designer-temp
 export const pluginVersionUID = `plugin::${configImport.pluginName}.email-designer-template-version`;
 
 export default ({ strapi }: { strapi: Core.Strapi }) => {
-  /**
-   * fill subject, text and html using lodash template
-   * @param {SendMailOptions} emailOptions
-   * @param {EmailTemplate} emailTemplate
-   * @param {object} data - data used to fill the template
-   */
-  const sendTemplatedEmail = async <T extends Record<string, any>>(
+  const validateEmailOptions = (
     emailOptions: Pick<
       SendMailOptions,
       "to" | "from" | "bcc" | "cc" | "attachments" | "headers" | "replyTo"
-    > = {},
-    emailTemplate?: Partial<EmailTemplate> & { templateReferenceId: number },
-    data: T = {} as T
+    > = {}
   ) => {
     const keysToIgnore = ["attachment", "attachments", "headers"];
 
@@ -70,6 +62,72 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
         }
       }
     });
+  };
+
+  const isEmailProviderConfigured = () => {
+    const emailConfig = strapi.config.get("plugin::email") as { provider?: string } | undefined;
+    const pluginEmail = strapi.plugin("email") as
+      | { provider?: { send?: (...args: any[]) => any } }
+      | undefined;
+    const provider = pluginEmail?.provider;
+    // If the provider is 'sendmail', it is not configured.
+    if (emailConfig?.provider === "sendmail") return false;
+    return Boolean(emailConfig?.provider && provider && typeof provider.send === "function");
+  };
+
+  /**
+   * Convert Strapi's {{= ... }} unescaped syntax to Mustache's {{{ ... }}} syntax
+   * Strapi templates use {{= VARIABLE }} but Mustache uses {{{ VARIABLE }}}
+   */
+  const convertStrapiToMustacheSyntax = (template: string): string => {
+    return template.replace(/\{\{=\s*(.+?)\s*\}\}/g, "{{{$1}}}");
+  };
+
+  /**
+   * Generate sample data for Strapi's core email templates
+   * @param type - The type of core email ('reset-password' or 'email-confirmation')
+   */
+  const generateCoreEmailSampleData = (type: "reset-password" | "email-confirmation") => {
+    const serverUrl = strapi.config.get("server.url") || "http://localhost:1337";
+
+    const baseData = {
+      USER: {
+        username: "john_doe",
+        email: "john.doe@example.com",
+      },
+      SERVER_URL: serverUrl,
+    };
+
+    if (type === "reset-password") {
+      return {
+        ...baseData,
+        TOKEN: "a1b2c3d4e5f6g7h8i9j0",
+        URL: `${serverUrl}/admin/auth/reset-password?code=a1b2c3d4e5f6g7h8i9j0`,
+      };
+    } else {
+      return {
+        ...baseData,
+        CODE: "x1y2z3a4b5c6",
+        URL: `${serverUrl}/api/auth/email-confirmation?confirmation=x1y2z3a4b5c6`,
+      };
+    }
+  };
+
+  /**
+   * fill subject, text and html using lodash template
+   * @param {SendMailOptions} emailOptions
+   * @param {EmailTemplate} emailTemplate
+   * @param {object} data - data used to fill the template
+   */
+  const sendTemplatedEmail = async <T extends Record<string, any>>(
+    emailOptions: Pick<
+      SendMailOptions,
+      "to" | "from" | "bcc" | "cc" | "attachments" | "headers" | "replyTo"
+    > = {},
+    emailTemplate?: Partial<EmailTemplate> & { templateReferenceId: number },
+    data: T = {} as T
+  ) => {
+    validateEmailOptions(emailOptions);
 
     // check if emailTemplate is valid
     isTemplateReferenceIdSchema.validateSync(emailTemplate.templateReferenceId, { abortEarly: true });
@@ -95,6 +153,12 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     bodyHtml = bodyHtml.replace(/<%/g, "{{").replace(/%>/g, "}}");
     bodyText = bodyText.replace(/<%/g, "{{").replace(/%>/g, "}}");
     subject = subject.replace(/<%/g, "{{").replace(/%>/g, "}}");
+
+    // Convert Strapi's {{= ... }} unescaped syntax to Mustache's {{{ ... }}}
+    bodyHtml = convertStrapiToMustacheSyntax(bodyHtml);
+    bodyText = convertStrapiToMustacheSyntax(bodyText);
+    subject = convertStrapiToMustacheSyntax(subject);
+
     // If no text is provided, convert html to text
     if ((!bodyText || !bodyText.length) && bodyHtml && bodyHtml.length) {
       bodyText = htmlToText(bodyHtml, { wordwrap: 130 });
@@ -120,6 +184,47 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     return strapi.plugin("email").provider.send({ ...emailOptions, ...templatedAttributes });
   };
 
+  const sendTestEmail = async <T extends Record<string, any>>(
+    emailOptions: Pick<SendMailOptions, "to">,
+    content: { subject?: string; html?: string; text?: string },
+    data: T = {} as T
+  ) => {
+    if (!isEmailProviderConfigured()) {
+      throw new Error("Email provider not configured");
+    }
+
+    validateEmailOptions(emailOptions);
+
+    let subject = content.subject || "No Subject";
+    let bodyHtml = content.html || "";
+    let bodyText = content.text || "";
+
+    // Replace <% and %> with {{ and }} to maintain compatibility with legacy templates
+    bodyHtml = bodyHtml.replace(/<%/g, "{{").replace(/%>/g, "}}");
+    bodyText = bodyText.replace(/<%/g, "{{").replace(/%>/g, "}}");
+    subject = subject.replace(/<%/g, "{{").replace(/%>/g, "}}");
+
+    // Convert Strapi's {{= ... }} unescaped syntax to Mustache's {{{ ... }}}
+    bodyHtml = convertStrapiToMustacheSyntax(bodyHtml);
+    bodyText = convertStrapiToMustacheSyntax(bodyText);
+    subject = convertStrapiToMustacheSyntax(subject);
+
+    if ((!bodyText || !bodyText.length) && bodyHtml && bodyHtml.length) {
+      bodyText = htmlToText(bodyHtml, { wordwrap: 130 });
+    }
+
+    const renderedSubject = Mustache.render(decode(subject), data);
+    const renderedHtml = Mustache.render(decode(bodyHtml), data);
+    const renderedText = Mustache.render(decode(bodyText), data);
+
+    return strapi.plugin("email").provider.send({
+      to: emailOptions.to,
+      subject: renderedSubject,
+      html: renderedHtml,
+      text: renderedText,
+    });
+  };
+
   /**
    * Promise to retrieve a composed HTML email.
    * @return {Promise}
@@ -138,6 +243,11 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     bodyHtml = bodyHtml.replace(/<%/g, "{{").replace(/%>/g, "}}");
     bodyText = bodyText.replace(/<%/g, "{{").replace(/%>/g, "}}");
     subject = subject.replace(/<%/g, "{{").replace(/%>/g, "}}");
+
+    // Convert Strapi's {{= ... }} unescaped syntax to Mustache's {{{ ... }}}
+    bodyHtml = convertStrapiToMustacheSyntax(bodyHtml);
+    bodyText = convertStrapiToMustacheSyntax(bodyText);
+    subject = convertStrapiToMustacheSyntax(subject);
 
     if ((!bodyText || !bodyText.length) && bodyHtml && bodyHtml.length) {
       bodyText = htmlToText(bodyHtml, { wordwrap: 130 });
@@ -165,6 +275,9 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
 
   return {
     sendTemplatedEmail,
+    sendTestEmail,
+    isEmailProviderConfigured,
+    generateCoreEmailSampleData,
     compose,
   };
 };

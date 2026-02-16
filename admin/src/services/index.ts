@@ -151,3 +151,33 @@ export const restoreTemplateVersion = async (templateId: string, versionId: stri
 export const deleteTemplateVersion = async (templateId: string, versionId: string) => {
   await axios.delete(`/${pluginName}/templates/${templateId}/versions/${versionId}`);
 };
+
+/**
+ * Check if email provider is configured
+ */
+export const getEmailProviderStatus = async () => {
+  const { data } = await axios.get<{ configured: boolean }>(`/${pluginName}/email/status`);
+  return data;
+};
+
+/**
+ * Get sample data for core email types
+ */
+export const getSampleEmailData = async (type: "reset-password" | "email-confirmation") => {
+  const { data } = await axios.get<Record<string, any>>(`/${pluginName}/email/sample-data/${type}`);
+  return data;
+};
+
+/**
+ * Send a test email using the current editor content
+ */
+export const sendTestEmail = async (payload: {
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+  data?: Record<string, any>;
+}) => {
+  const { data } = await axios.post(`/${pluginName}/email/test-send`, payload);
+  return data;
+};
