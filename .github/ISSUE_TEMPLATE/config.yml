@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Strapi Community
+    url: https://strapi.io/community
+    about: Ask questions and discuss with other Strapi users
+  - name: Documentation
+    url: https://docs.strapi.io
+    about: Check the Strapi documentation
