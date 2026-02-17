@@ -504,6 +504,91 @@ This returns the email HTML and Text with the data merged.
 }
 ```
 
+### 📧 Dynamic Headers with Variables
+
+Email headers can now include template variables from your data object. This is particularly useful for mailing list compliance (List-Unsubscribe header), tracking, and other dynamic scenarios.
+
+**How It Works:**
+When you pass variables in the `data` parameter of `sendTemplatedEmail()`, they are automatically available in the `headers` section. Simply use `{{variableName}}` syntax to reference them.
+
+**Before - Static Headers (No Variables):**
+
+```ts
+// ❌ Old way - headers were always static, same for every email
+await strapi
+  .plugin("email-designer-5")
+  .service("email")
+  .sendTemplatedEmail(
+    {
+      to: "user@example.com",
+      headers: {
+        // This unsubscribe link is the same for everyone - not useful!
+        "List-Unsubscribe": "<mailto:unsubscribe@example.com>, <https://example.com/unsubscribe>",
+      },
+    },
+    { templateReferenceId: 20 },
+    {
+      /* data */
+    }
+  );
+```
+
+**After - Dynamic Headers with Variables (New!):**
+
+```ts
+// ✅ New way - use variables from data object in headers
+const user = {
+  id: 456,
+  email: "john@example.com",
+  unsubscribeToken: "xyz789abc",
+};
+
+await strapi
+  .plugin("email-designer-5")
+  .service("email")
+  .sendTemplatedEmail(
+    {
+      to: user.email,
+      headers: {
+        // Now the unsubscribe link is personalized for each user! 🚀
+        "List-Unsubscribe":
+          "<mailto:unsubscribe@example.com>, <https://example.com/unsubscribe?user={{id}}&token={{urlEncode unsubscribeToken}}>",
+        "X-User-ID": "{{id}}",
+        "X-Campaign": "{{campaignName}}",
+      },
+    },
+    { templateReferenceId: 20, subject: "Hello {{name}}" },
+    {
+      // These variables are automatically available in the headers section above ⬆️
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      unsubscribeToken: user.unsubscribeToken,
+      campaignName: "monthly-newsletter",
+    }
+  );
+
+// 📨 Result: Each user gets a unique unsubscribe link in their email headers:
+// User 456: <mailto:unsubscribe@example.com>, <https://example.com/unsubscribe?user=456&token=xyz789abc>
+// User 789: <mailto:unsubscribe@example.com>, <https://example.com/unsubscribe?user=789&token=def456ghi>
+// etc...
+```
+
+**Header Template Syntax:**
+
+- `{{variableName}}` - Insert variables with HTML escaping
+- `{{{variableName}}}` - Insert variables without escaping
+- `{{urlEncode variableName}}` - URL encode a variable for use in query parameters (useful for List-Unsubscribe URLs)
+- `{{#ifCondition}}...{{/ifCondition}}` - Conditionals (Mustache syntax)
+- `{{#arrayName}}...{{/arrayName}}` - Loops (Mustache syntax)
+
+**Use Cases:**
+
+- **Mailing List Compliance**: Add personalized unsubscribe links with user-specific tokens
+- **Email Tracking**: Include user IDs and campaign identifiers in custom headers
+- **Analytics**: Add timestamps and user information to email metadata
+- **Support Routing**: Create user-specific reply-to addresses
+
 ## 🛟 Contributing
 
 I am SUPER new to React. I have been using Nuxt all my life. If you see where I could have done something better in the admin area, please let me know. I am open to suggestions.

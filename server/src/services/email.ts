@@ -114,6 +114,51 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   };
 
   /**
+   * Render email headers with Mustache templating and custom lambdas
+   * Supports {{variable}} syntax and helper functions like {{urlEncode variable}}
+   * @param headers - Headers object which may contain template variables
+   * @param data - Data object to pass to Mustache for variable rendering
+   * @returns Rendered headers with variables replaced by data values
+   */
+  const renderHeaders = <T extends Record<string, any>>(headers: any, data: T = {} as T): any => {
+    if (!headers) return undefined;
+
+    // Create a data object with helper functions for Mustache lambdas
+    const renderData = {
+      ...data,
+      // Helper lambda for URL encoding
+      urlEncode: function () {
+        return function (text: string, render: (t: string) => string) {
+          const rendered = render(text.trim());
+          return encodeURIComponent(rendered);
+        };
+      },
+    };
+
+    const renderedHeaders: Record<string, any> = {};
+
+    Object.entries(headers).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        // Handle array of header values
+        renderedHeaders[key] = value.map((v: any) => {
+          if (typeof v === "string") {
+            return Mustache.render(v, renderData);
+          }
+          return v;
+        });
+      } else if (typeof value === "string") {
+        // Handle single header value
+        renderedHeaders[key] = Mustache.render(value, renderData);
+      } else {
+        // Pass through non-string values (e.g., Nodemailer header objects)
+        renderedHeaders[key] = value;
+      }
+    });
+
+    return renderedHeaders;
+  };
+
+  /**
    * fill subject, text and html using lodash template
    * @param {SendMailOptions} emailOptions
    * @param {EmailTemplate} emailTemplate
@@ -181,11 +226,19 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
           : compiled,
       {}
     );
-    return strapi.plugin("email").provider.send({ ...emailOptions, ...templatedAttributes });
+
+    // Render headers with template data for dynamic values
+    const renderedHeaders = renderHeaders(emailOptions.headers, data);
+    const finalEmailOptions = {
+      ...emailOptions,
+      ...(renderedHeaders && { headers: renderedHeaders }),
+    };
+
+    return strapi.plugin("email").provider.send({ ...finalEmailOptions, ...templatedAttributes });
   };
 
   const sendTestEmail = async <T extends Record<string, any>>(
-    emailOptions: Pick<SendMailOptions, "to">,
+    emailOptions: Pick<SendMailOptions, "to" | "headers">,
     content: { subject?: string; html?: string; text?: string },
     data: T = {} as T
   ) => {
@@ -217,8 +270,15 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     const renderedHtml = Mustache.render(decode(bodyHtml), data);
     const renderedText = Mustache.render(decode(bodyText), data);
 
-    return strapi.plugin("email").provider.send({
+    // Render headers with template data for dynamic values
+    const renderedHeaders = renderHeaders(emailOptions.headers, data);
+    const finalEmailOptions = {
       to: emailOptions.to,
+      ...(renderedHeaders && { headers: renderedHeaders }),
+    };
+
+    return strapi.plugin("email").provider.send({
+      ...finalEmailOptions,
       subject: renderedSubject,
       html: renderedHtml,
       text: renderedText,
@@ -278,6 +338,8 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     sendTestEmail,
     isEmailProviderConfigured,
     generateCoreEmailSampleData,
+    renderHeaders,
+    convertStrapiToMustacheSyntax,
     compose,
   };
 };
