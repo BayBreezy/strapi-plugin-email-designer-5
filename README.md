@@ -22,6 +22,7 @@ Design your own email templates directly from the Strapi admin panel and use the
     - [✅ Exporting a design](#-exporting-a-design)
     - [✅ Importing a Single Design](#-importing-a-single-design)
     - [✅ Saving a design](#-saving-a-design)
+    - [✅ Test Sending an Email](#-test-sending-an-email)
   - [{ } Mustache](#--mustache)
   - [💻 Programmatically Sending Emails](#-programmatically-sending-emails)
   - [🚀 Available Services](#-available-services)
@@ -353,6 +354,38 @@ When you start a new design, a button will be located in the top right called `I
 Once you are done editing your design, you can click on the `Save` button located at the top right of the page. The `Template Reference ID`, `Template Name`, & `Subject` fields are required to save the design.(Well not the last two lol)
 
 The `Template Reference ID` is a unique identifier for the design. It is used to reference the design when sending emails programmatically.
+
+### ✅ Test Sending an Email
+
+You can test your email templates directly from the designer before using them in your application. While editing a template on the HTML tab, you'll find a `Test Send` button in the top right action menu (alongside the Import button).
+
+**Opening the Test Send Modal:**
+
+1. Click the `Test Send` button (paper plane icon) in the top right of the designer
+2. A modal will open with fields for recipient email and optional custom data
+
+**Test Send Modal Fields:**
+
+- **To Email** (required): The email address where the test email will be sent
+- **Data (JSON)** (optional): Custom JSON data to merge into your template variables. If left empty, the template will render without custom data.
+
+**Using Sample Data for Core Templates:**
+If you're testing core Strapi email templates (reset-password or email-confirmation), the modal provides quick-load buttons:
+
+- **Load Reset Password Data**: Populates the data field with sample variables used in password reset emails (USER, TOKEN, URL, SERVER_URL)
+- **Load Email Confirmation Data**: Populates the data field with sample variables used in email confirmation (USER, CODE, URL, SERVER_URL)
+
+These buttons provide realistic mock data so you can see exactly how your template will render with actual Strapi variables.
+
+**Sending a Test Email:**
+
+1. Enter the recipient email address
+2. (Optional) Provide custom JSON data or click a sample data button
+3. Click the `Send` button
+4. The template will render with your data and send to the specified email address
+
+> [!NOTE]
+> Test sending requires that your email provider is properly configured in your Strapi instance. The modal will display a status message indicating whether email is configured and ready to use.
 
 ## { } Mustache
 
