@@ -1,5 +1,51 @@
 # Changelog
 
+## v0.0.9
+
+[compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.8...v0.0.9)
+
+### 🚀 Enhancements
+
+- Add react-diff-viewer-continued dependency ([a8e7a79](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/a8e7a79))
+- **version:** Implement version management controller with history retrieval, restoration and deletion ([7337d48](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/7337d48))
+- **server:** Enhance `saveTemplate` to track changes and versioning ([834a9ed](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/834a9ed))
+- **content-types:** Add versioning fields to email designer template ([e86a72b](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/e86a72b))
+- **admin:** Add version management functions for templates to the client side ([ff44050](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/ff44050))
+- **translations:** Add versioning related messages and tooltips to English translations ([e22a0ac](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/e22a0ac))
+- **version-history:** Implement VersionHistoryTab component for managing template versions ([13ab8ba](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/13ab8ba))
+- **version-compare-modal:** Add VersionCompareModal component for comparing template versions ([59f277c](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/59f277c))
+- **designer:** Enhance email designer with version history tab and update editor modes ([824e6a1](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/824e6a1))
+- **designer:** Integrate search parameters for editor mode selection ([1bcbc80](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/1bcbc80))
+- **designer:** Refactor Designer component and add modular subcomponents for improved structure ([e84f102](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/e84f102))
+- **version-compare-modal:** Add summaries for design, HTML, text, subject, and name changes in comparison tabs ([7174ed3](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/7174ed3))
+- **version-compare-modal:** Remove unused imports for cleaner code ([1fdfc24](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/1fdfc24))
+- **designer:** Implement test email functionality and add action menu ([a367a94](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/a367a94))
+- **readme:** Add section for testing email templates with detailed instructions ([fd1f14a](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/fd1f14a))
+- **homepage:** Add search functionality for email templates with translations ([a8d643e](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/a8d643e))
+- **email:** Add support for dynamic email headers using Mustache templating. closes #49 ([#49](https://github.com/BayBreezy/strapi-plugin-email-designer-5/issues/49))
+- **translations:** Add test email functionality and version history support in Spanish and French translations ([debecf3](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/debecf3))
+- **commitlint:** Add commitlint configuration and CLI as dev dependencies ([b2dece6](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/b2dece6))
+- **docs:** Add detailed JSDoc comments for various components and services ([8ff9be7](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/8ff9be7))
+- **package:** Add GitHub username to maintainers section ([2a039ce](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/2a039ce))
+
+### 🩹 Fixes
+
+- Cast email configuration as unknown before EmailConfig ([55570e7](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/55570e7))
+- Type annotation for exportHtml callback in Designer component ([60b117d](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/60b117d))
+
+### 🏡 Chore
+
+- Update dependencies and add lint-staged configuration ([3c9cf76](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/3c9cf76))
+- **docs:** Inform devs about paid unlayer features. closes #54 ([#54](https://github.com/BayBreezy/strapi-plugin-email-designer-5/issues/54))
+- **release:** V0.0.8 ([d918902](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/d918902))
+- **server:** Implement version management service with history retrieval, restoration and deletion ([3cca2c9](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/3cca2c9))
+- **server:** Add version management routes for template versions ([8ec50dd](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/8ec50dd))
+- Add diff screenshot to readme ([7f5590c](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/7f5590c))
+
+### ❤️ Contributors
+
+- Behon Baker ([@BayBreezy](https://github.com/BayBreezy))
+
 ## v0.0.8
 
 [compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.7...v0.0.8)
