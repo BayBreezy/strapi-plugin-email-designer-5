@@ -78,6 +78,8 @@
     "yup": "^1.7.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.4.1",
+    "@commitlint/config-conventional": "^20.4.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
     "@strapi/sdk-plugin": "^5.4.0",
     "@strapi/strapi": "^5.36.0",
