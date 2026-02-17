@@ -34,6 +34,10 @@
   "save": "Guardar",
   "cancel": "Cancelar",
   "confirm": "Confirmar",
+  "actions": "Acciones",
+  "action": "Acción",
+  "action.restore": "Restaurar",
+  "action.delete": "Eliminar",
 
   "success.single.message": "La plantilla de correo se ha importado con éxito",
   "success.message": "La plantilla de correo se ha guardado con éxito",
@@ -61,6 +65,25 @@
 
   "designer.tab.html": "HTML",
   "designer.tab.text": "Texto",
+  "designer.tab.history": "Historial",
+
+  "testSend.action": "Envío de Prueba",
+  "testSend.title": "Enviar Correo de Prueba",
+  "testSend.to.label": "Para",
+  "testSend.to.placeholder": "tu@example.com",
+  "testSend.data.label": "Datos (JSON)",
+  "testSend.data.placeholder": "{\"nombre\": \"Jane\"}",
+  "testSend.data.help": "Opcional. Se utiliza para renderizar variables de Mustache.",
+  "testSend.loadResetPasswordData": "Cargar Datos de Restablecimiento de Contraseña",
+  "testSend.loadEmailConfirmationData": "Cargar Datos de Confirmación de Correo",
+  "testSend.config.checking": "Verificando la configuración del proveedor de correo...",
+  "testSend.sending": "Enviando...",
+  "testSend.success": "Correo de prueba enviado con éxito",
+  "testSend.error.noRecipient": "Por favor, proporciona un correo de destino",
+  "testSend.error.invalidJson": "Datos JSON inválidos",
+  "testSend.error.notConfigured": "El proveedor de correo no está configurado",
+  "testSend.error.loadSampleData": "Error al cargar datos de ejemplo",
+  "testSend.error.failed": "Error al enviar correo de prueba",
 
   "table.header.name": "Nombre de la Plantilla",
   "table.header.templateReferenceId": "ID de Referencia de la Plantilla",
@@ -83,5 +106,27 @@
   "customTable.noDesigns": "Aún no tienes diseños disponibles",
 
   "error.noReferenceId.title": "ID de Referencia Requerido",
-  "error.noReferenceId.message": "Por favor, proporciona un ID de referencia para la plantilla de correo"
+  "error.noReferenceId.message": "Por favor, proporciona un ID de referencia para la plantilla de correo",
+
+  "versionHistory.noVersions": "No hay historial de versiones disponible",
+  "error.loadingVersions": "Ocurrió un error al cargar el historial de versiones",
+  "error.restoreVersion": "Ocurrió un error al restaurar la versión",
+  "error.deleteVersion": "Ocurrió un error al eliminar la versión",
+  "success.versionRestored": "Versión restaurada con éxito",
+  "success.versionDeleted": "Versión eliminada con éxito",
+  "confirm.restoreVersion.message": "¿Estás seguro de que deseas restaurar esta versión? Tus cambios actuales se guardarán como una nueva versión.",
+  "confirm.deleteVersion.message": "¿Estás seguro de que deseas eliminar esta versión?",
+  "tooltip.restore": "Restaurar a esta versión",
+  "tooltip.version.delete": "Eliminar esta versión",
+  "tooltip.compare": "Comparar con la versión actual",
+  "loading": "Cargando...",
+  "close": "Cerrar",
+
+  "versionCompare.title": "Comparar Versiones",
+  "versionCompare.comparing": "Comparando Versión #{old} con la Versión Actual",
+  "versionCompare.tab.design": "Diseño (JSON)",
+  "versionCompare.tab.html": "HTML",
+  "versionCompare.tab.text": "Texto",
+  "versionCompare.tab.subject": "Asunto",
+  "versionCompare.tab.name": "Nombre"
 }

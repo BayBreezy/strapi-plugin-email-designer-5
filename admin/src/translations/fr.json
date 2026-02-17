@@ -34,6 +34,10 @@
   "save": "Enregistrer",
   "cancel": "Annuler",
   "confirm": "Confirmer",
+  "actions": "Actions",
+  "action": "Action",
+  "action.restore": "Restaurer",
+  "action.delete": "Supprimer",
 
   "success.single.message": "Le modèle d'email a été importé avec succès",
   "success.message": "Modèle d'email enregistré avec succès",
@@ -61,6 +65,25 @@
 
   "designer.tab.html": "HTML",
   "designer.tab.text": "Texte",
+  "designer.tab.history": "Historique",
+
+  "testSend.action": "Envoi de Test",
+  "testSend.title": "Envoyer un Email de Test",
+  "testSend.to.label": "À",
+  "testSend.to.placeholder": "vous@example.com",
+  "testSend.data.label": "Données (JSON)",
+  "testSend.data.placeholder": "{\"nom\": \"Jane\"}",
+  "testSend.data.help": "Optionnel. Utilisé pour rendu les variables Mustache.",
+  "testSend.loadResetPasswordData": "Charger les Données de Réinitialisation du Mot de Passe",
+  "testSend.loadEmailConfirmationData": "Charger les Données de Confirmation d'Email",
+  "testSend.config.checking": "Vérification de la configuration du fournisseur d'email...",
+  "testSend.sending": "Envoi en cours...",
+  "testSend.success": "Email de test envoyé avec succès",
+  "testSend.error.noRecipient": "Veuillez fournir une adresse email destinataire",
+  "testSend.error.invalidJson": "Données JSON invalides",
+  "testSend.error.notConfigured": "Le fournisseur d'email n'est pas configuré",
+  "testSend.error.loadSampleData": "Erreur lors du chargement des données d'exemple",
+  "testSend.error.failed": "Erreur lors de l'envoi de l'email de test",
 
   "table.header.name": "Nom du Modèle",
   "table.header.templateReferenceId": "ID de Référence du Modèle",
@@ -83,5 +106,27 @@
   "customTable.noDesigns": "Aucun design disponible pour le moment",
 
   "error.noReferenceId.title": "ID de Référence Requis",
-  "error.noReferenceId.message": "Veuillez fournir un ID de référence pour le modèle d'email"
+  "error.noReferenceId.message": "Veuillez fournir un ID de référence pour le modèle d'email",
+
+  "versionHistory.noVersions": "Aucun historique de version disponible",
+  "error.loadingVersions": "Une erreur est survenue lors du chargement de l'historique des versions",
+  "error.restoreVersion": "Une erreur est survenue lors de la restauration de la version",
+  "error.deleteVersion": "Une erreur est survenue lors de la suppression de la version",
+  "success.versionRestored": "Version restaurée avec succès",
+  "success.versionDeleted": "Version supprimée avec succès",
+  "confirm.restoreVersion.message": "Êtes-vous sûr de vouloir restaurer cette version ? Vos modifications actuelles seront enregistrées en tant que nouvelle version.",
+  "confirm.deleteVersion.message": "Êtes-vous sûr de vouloir supprimer cette version ?",
+  "tooltip.restore": "Restaurer à cette version",
+  "tooltip.version.delete": "Supprimer cette version",
+  "tooltip.compare": "Comparer avec la version actuelle",
+  "loading": "Chargement...",
+  "close": "Fermer",
+
+  "versionCompare.title": "Comparer les Versions",
+  "versionCompare.comparing": "Comparaison de la Version #{old} avec la Version Actuelle",
+  "versionCompare.tab.design": "Conception (JSON)",
+  "versionCompare.tab.html": "HTML",
+  "versionCompare.tab.text": "Texte",
+  "versionCompare.tab.subject": "Objet",
+  "versionCompare.tab.name": "Nom"
 }
