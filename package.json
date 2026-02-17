@@ -12,6 +12,14 @@
     "type": "git",
     "url": "git+ssh://git@github.com/BayBreezy/strapi-plugin-email-designer-5.git"
   },
+  "maintainers": [
+    {
+      "name": "Behon Baker",
+      "email": "behon.baker@yahoo.com",
+      "url": "https://behonbaker.com",
+      "github": "BayBreezy"
+    }
+  ],
   "license": "MIT",
   "author": {
     "name": "Behon Baker",
