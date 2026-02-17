@@ -7,6 +7,8 @@
   "page.home.cta": "Crear un nuevo correo",
   "page.home.cta.tooltip": "Haz clic para comenzar a crear un nuevo correo",
 
+  "search.placeholder": "Buscar plantillas por nombre...",
+
   "designer.exportTemplates": "Exportar Plantillas",
   "designer.importTemplates": "Importar Plantillas",
   "error.loadingTemplates": "Ocurrió un error al cargar las plantillas de correo",

@@ -1,5 +1,5 @@
 import { Layouts, Page, useNotification } from "@strapi/admin/strapi-admin";
-import { Button, Divider, Tabs, Tooltip } from "@strapi/design-system";
+import { Box, Button, Divider, Searchbar, SearchForm, Tabs, Tooltip } from "@strapi/design-system";
 import { useCallback, useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
@@ -14,12 +14,15 @@ const HomePage = () => {
   const navigate = useNavigate();
   const translate = useTr();
   const [emailTemplates, setEmailTemplates] = useState<EmailTemplate[]>([]);
+  const [searchResults, setSearchResults] = useState<EmailTemplate[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [activeTab, setActiveTab] = useState("customEmailTemplates");
   const { toggleNotification } = useNotification();
 
-  const init = useCallback(async () => {
-    const data = await getTemplatesData();
+  const init = useCallback(async (search?: string) => {
+    const data = await getTemplatesData(search);
     setEmailTemplates(data);
+    setSearchResults(data);
   }, []);
 
   useEffect(() => {
@@ -30,6 +33,26 @@ const HomePage = () => {
         message: translate("error.loadingTemplates"),
       });
     });
+  }, []);
+
+  const handleSearch = useCallback(async (value: string) => {
+    setSearchTerm(value);
+
+    if (value.trim().length === 0) {
+      // If search is empty, reload all templates
+      const data = await getTemplatesData();
+      setSearchResults(data);
+    } else {
+      // Fetch filtered results from backend
+      const data = await getTemplatesData(value);
+      setSearchResults(data);
+    }
+  }, []);
+
+  const handleClearSearch = useCallback(async () => {
+    setSearchTerm("");
+    const data = await getTemplatesData();
+    setSearchResults(data);
   }, []);
 
   return (
@@ -55,6 +78,9 @@ const HomePage = () => {
           value={activeTab}
           onValueChange={(selected: string) => {
             setActiveTab(selected);
+            if (selected !== "customEmailTemplates") {
+              handleClearSearch();
+            }
           }}
         >
           <Tabs.List aria-label="Switch between custom email designs & core email designs">
@@ -67,7 +93,18 @@ const HomePage = () => {
             style={{ borderBottomRightRadius: "6px", borderBottomLeftRadius: "6px" }}
             value="customEmailTemplates"
           >
-            <CustomEmailTable reload={init} data={emailTemplates} />
+            <Box padding={3} style={{ maxWidth: "400px", width: "100%" }}>
+              <SearchForm>
+                <Searchbar
+                  name="templateSearch"
+                  onClear={handleClearSearch}
+                  value={searchTerm}
+                  placeholder={translate("search.placeholder") || "Search templates by name..."}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearch(e.target.value)}
+                />
+              </SearchForm>
+            </Box>
+            <CustomEmailTable reload={init} data={searchResults} />
           </Tabs.Content>
           <Tabs.Content
             style={{ borderBottomRightRadius: "6px", borderBottomLeftRadius: "6px" }}

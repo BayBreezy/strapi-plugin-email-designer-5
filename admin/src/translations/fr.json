@@ -7,6 +7,8 @@
   "page.home.cta": "Créer un nouvel email",
   "page.home.cta.tooltip": "Cliquez pour commencer à créer un nouvel email",
 
+  "search.placeholder": "Rechercher des modèles par nom...",
+
   "designer.exportTemplates": "Exporter les Modèles d'Emails",
   "designer.importTemplates": "Importer les Modèles d'Emails",
   "error.loadingTemplates": "Une erreur est survenue lors du chargement des modèles d'emails",

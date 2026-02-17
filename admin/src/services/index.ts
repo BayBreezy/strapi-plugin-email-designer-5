@@ -9,10 +9,18 @@ import { EmailConfig, EmailTemplate } from "../types";
 export const DATE_FORMAT = "MMM DD, YYYY [at] h:mmA";
 
 /**
- * Fetches all email templates
+ * Fetches all email templates, optionally filtered by search term
  */
-export const getTemplatesData = async () => {
-  const { data } = await axios.get<EmailTemplate[]>(`/${pluginName}/templates`);
+export const getTemplatesData = async (search?: string) => {
+  const params = new URLSearchParams();
+  if (search && search.trim().length > 0) {
+    params.append("search", search.trim());
+  }
+
+  const queryString = params.toString();
+  const url = queryString ? `/${pluginName}/templates?${queryString}` : `/${pluginName}/templates`;
+
+  const { data } = await axios.get<EmailTemplate[]>(url);
   data.forEach((template) => {
     template.createdAt = dayjs(template.createdAt).format(DATE_FORMAT);
     template.updatedAt = dayjs(template.updatedAt).format(DATE_FORMAT);

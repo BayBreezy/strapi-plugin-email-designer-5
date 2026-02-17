@@ -14,12 +14,26 @@ const isValidRefId = yup.number().required().label("Template reference ID").min(
  */
 const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
   /**
-   * Get template design action.
+   * Get template design action with optional search support.
    *
+   * @query {string} search - Optional search term to filter templates by name
    * @return {Object}
    */
   getTemplates: async (ctx) => {
-    const templates = await strapi.plugin(configImport.pluginName).service("template").findMany();
+    const { search } = ctx.query;
+
+    let whereClause: any = {};
+
+    // If search term is provided, filter by name using LIKE/contains
+    if (search && typeof search === "string" && search.trim().length > 0) {
+      whereClause = {
+        name: {
+          $containsi: search.trim(),
+        },
+      };
+    }
+
+    const templates = await strapi.plugin(configImport.pluginName).service("template").findMany(whereClause);
     ctx.send(templates);
   },
 

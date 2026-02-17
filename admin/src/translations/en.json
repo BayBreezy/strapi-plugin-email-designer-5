@@ -7,6 +7,8 @@
   "page.home.cta": "Create a new email",
   "page.home.cta.tooltip": "Click to start creating a new email",
 
+  "search.placeholder": "Search templates by name...",
+
   "designer.exportTemplates": "Export Email Templates",
   "designer.importTemplates": "Import Email Templates",
   "error.loadingTemplates": "An error occurred while loading the email templates",
