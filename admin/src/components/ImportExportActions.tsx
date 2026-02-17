@@ -1,12 +1,12 @@
 import { Button, Dialog, Flex } from "@strapi/design-system";
-import { CloudUpload, Download, Trash } from "@strapi/icons";
+import { CloudUpload, Download } from "@strapi/icons";
 import { useNotification } from "@strapi/strapi/admin";
 import dayjs from "dayjs";
 import { destr } from "destr";
-import { isEmpty, uniqBy } from "lodash";
+import { isEmpty } from "lodash";
 import React, { useRef, useState } from "react";
 import { useIntl } from "react-intl";
-import { createTemplate, DATE_FORMAT } from "../services";
+import { createTemplate } from "../services";
 import { EmailTemplate } from "../types";
 import { getTranslation } from "../utils/getTranslation";
 import GlobalLoader from "./GlobalLoader";

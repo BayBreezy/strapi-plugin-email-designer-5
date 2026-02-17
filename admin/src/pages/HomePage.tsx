@@ -1,7 +1,6 @@
 import { Layouts, Page, useNotification } from "@strapi/admin/strapi-admin";
 import { Box, Button, Divider, Searchbar, SearchForm, Tabs, Tooltip } from "@strapi/design-system";
 import { useCallback, useEffect, useState } from "react";
-import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import CoreEmailTable from "../components/CoreEmailTable";
 import CustomEmailTable from "../components/CustomEmailTable";

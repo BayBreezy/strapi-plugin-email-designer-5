@@ -84,7 +84,7 @@ export default {
                 },
               },
             },
-            // Values that can be used in the Email Addres Confirmation context
+            // Values that can be used in the Email Address Confirmation context
             addressConfirmation: {
               name: "Confirm Address",
               mergeTags: {
