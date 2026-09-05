@@ -115,7 +115,7 @@ npm run build
 ### 1. Frontend Changes (admin/)
 
 - Update [admin/src/translations/en.json](admin/src/translations/en.json) with any new UI strings
-- Then update [admin/src/translations/es.json](admin/src/translations/es.json) and [admin/src/translations/fr.json](admin/src/translations/fr.json)
+- Then update [admin/src/translations/es.json](admin/src/translations/es.json), [admin/src/translations/de.json](admin/src/translations/de.json) and [admin/src/translations/fr.json](admin/src/translations/fr.json)
 - Components should be functional with hooks
 - Add TypeScript types for all props
 
@@ -140,7 +140,8 @@ When modifying email rendering:
 
 1. Add new keys to [admin/src/translations/en.json](admin/src/translations/en.json)
 2. Add same keys to [admin/src/translations/es.json](admin/src/translations/es.json) with Spanish translations
-3. Add same keys to [admin/src/translations/fr.json](admin/src/translations/fr.json) with French translations
+3. Add same keys to [admin/src/translations/de.json](admin/src/translations/de.json) with German translations
+4. Add same keys to [admin/src/translations/fr.json](admin/src/translations/fr.json) with French translations
 
 **Translation Key Naming Convention:**
 - Use dot notation: `feature.action.description`

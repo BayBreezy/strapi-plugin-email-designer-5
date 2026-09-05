@@ -1,0 +1,132 @@
+{
+  "page.title": "E-Mail-Designer (v5)",
+  "page.design.title": "E-Mail-Designer",
+  "page.subTitle": "E-Mails ganz einfach in Ihrem Strapi-5-Administrationsbereich gestalten",
+  "plugin.name": "E-Mail-Designer 5",
+
+  "page.home.cta": "Neue E-Mail erstellen",
+  "page.home.cta.tooltip": "Klicken Sie hier, um eine neue E-Mail zu erstellen",
+
+  "search.placeholder": "Vorlagen nach Namen durchsuchen...",
+
+  "designer.exportTemplates": "E-Mail-Vorlagen exportieren",
+  "designer.importTemplates": "E-Mail-Vorlagen importieren",
+  "error.loadingTemplates": "Beim Laden der E-Mail-Vorlagen ist ein Fehler aufgetreten",
+
+  "input.label.templateReferenceId": "Referenz-ID der Vorlage",
+  "input.placeholder.templateReferenceId": "z. B. 1",
+  "input.label.templateName": "Name der Vorlage",
+  "input.placeholder.templateName": "z. B. Willkommens-E-Mail",
+  "input.label.subject": "Betreff der E-Mail",
+  "input.placeholder.subject": "z. B. Willkommen auf unserer Plattform",
+
+  "import": "Importieren",
+  "pleaseWait": "Bitte warten...",
+  "importingTemplates": "E-Mail-Vorlagen werden importiert...",
+  "error.importingTemplates": "Beim Importieren ist ein Fehler aufgetreten",
+  "success.importingTemplates": "E-Mail-Vorlagen erfolgreich importiert",
+
+  "tooltip.copyTemplateId": "Vorlagen-ID kopieren",
+  "success.copyTemplateId": "Vorlagen-ID in die Zwischenablage kopiert",
+
+  "noName": "Kein Name",
+  "success": "Erfolg",
+  "save": "Speichern",
+  "cancel": "Abbrechen",
+  "confirm": "Bestätigen",
+  "actions": "Aktionen",
+  "action": "Aktion",
+  "action.restore": "Wiederherstellen",
+  "action.delete": "Löschen",
+
+  "success.single.message": "Die E-Mail-Vorlage wurde erfolgreich importiert",
+  "success.message": "E-Mail-Vorlage erfolgreich gespeichert",
+  "success.duplicate": "E-Mail-Vorlage erfolgreich dupliziert",
+  "success.delete": "E-Mail-Vorlage erfolgreich gelöscht",
+
+  "confirm.title": "Aktion bestätigen",
+  "confirm.singleImport": "Möchten Sie diese E-Mail-Vorlage wirklich importieren? Dadurch wird das aktuelle Design, an dem Sie arbeiten, ersetzt.",
+  "confirm.import.message": "Möchten Sie diese E-Mail-Vorlagen wirklich importieren? Vorhandene Vorlagen mit derselben Referenz-ID werden ersetzt.",
+  "confirm.duplicate.message": "Möchten Sie diese E-Mail-Vorlage wirklich duplizieren?",
+  "confirm.delete.message": "Möchten Sie diese E-Mail-Vorlage wirklich löschen?",
+
+  "error": "Fehler",
+  "error.message": "Beim Speichern der E-Mail-Vorlage ist ein Fehler aufgetreten",
+  "error.duplicate": "Beim Duplizieren der E-Mail-Vorlage ist ein Fehler aufgetreten",
+  "error.delete": "Beim Löschen der E-Mail-Vorlage ist ein Fehler aufgetreten",
+
+  "tooltip.edit": "Diese E-Mail-Vorlage bearbeiten",
+  "tooltip.delete": "Diese E-Mail-Vorlage löschen",
+  "tooltip.duplicate": "Diese E-Mail-Vorlage duplizieren",
+  "tooltip.downloadHtml": "HTML herunterladen",
+  "tooltip.downloadDesign": "Design (JSON) herunterladen",
+
+  "goBack": "Zurück",
+
+  "designer.tab.html": "HTML",
+  "designer.tab.text": "Text",
+
+  "testSend.action": "Testversand",
+  "testSend.title": "Test-E-Mail senden",
+  "testSend.to.label": "An",
+  "testSend.to.placeholder": "you@example.com",
+  "testSend.data.label": "Daten (JSON)",
+  "testSend.data.placeholder": "{\"name\": \"Jane\"}",
+  "testSend.data.help": "Optional. Wird zum Rendern von Mustache-Variablen verwendet.",
+  "testSend.loadResetPasswordData": "Daten zum Zurücksetzen des Passworts laden",
+  "testSend.loadEmailConfirmationData": "Daten zur E-Mail-Bestätigung laden",
+  "testSend.config.checking": "E-Mail-Provider-Konfiguration wird überprüft...",
+  "testSend.sending": "Wird gesendet...",
+  "testSend.success": "Test-E-Mail erfolgreich gesendet",
+  "testSend.error.noRecipient": "Bitte geben Sie eine Empfänger-E-Mail-Adresse an",
+  "testSend.error.invalidJson": "Ungültige JSON-Daten",
+  "testSend.error.notConfigured": "Der E-Mail-Provider ist nicht konfiguriert",
+  "testSend.error.loadSampleData": "Beispieldaten konnten nicht geladen werden",
+  "testSend.error.failed": "Test-E-Mail konnte nicht gesendet werden",
+
+  "table.header.name": "Name der Vorlage",
+  "table.header.templateReferenceId": "Referenz-ID der Vorlage",
+  "table.header.createdAt": "Erstellt am",
+  "table.header.updatedAt": "Aktualisiert am",
+  "table.header.coreEmailType": "Name der Core-E-Mail",
+
+  "table.action.edit": "Bearbeiten",
+  "table.action.delete": "Löschen",
+
+  "emailTypes.core.tab.label": "Core-E-Mails",
+  "emailTypes.custom.tab.label": "Benutzerdefinierte E-Mails",
+
+  "emailTypes.user-address-confirmation": "Bestätigung der Benutzeradresse",
+  "emailTypes.reset-password": "Passwort zurücksetzen",
+  "user-address-confirmation": "Bestätigung der Benutzeradresse",
+  "reset-password": "Passwort zurücksetzen",
+
+  "customTable.addDesign": "Klicken Sie hier, um ein neues Design hinzuzufügen",
+  "customTable.noDesigns": "Noch keine Designs verfügbar",
+
+  "error.noReferenceId.title": "Referenz-ID erforderlich",
+  "error.noReferenceId.message": "Bitte geben Sie eine Referenz-ID für die E-Mail-Vorlage an",
+
+  "designer.tab.history": "Verlauf",
+  "versionHistory.noVersions": "Kein Versionsverlauf verfügbar",
+  "error.loadingVersions": "Beim Laden des Versionsverlaufs ist ein Fehler aufgetreten",
+  "error.restoreVersion": "Beim Wiederherstellen der Version ist ein Fehler aufgetreten",
+  "error.deleteVersion": "Beim Löschen der Version ist ein Fehler aufgetreten",
+  "success.versionRestored": "Version erfolgreich wiederhergestellt",
+  "success.versionDeleted": "Version erfolgreich gelöscht",
+  "confirm.restoreVersion.message": "Möchten Sie diese Version wirklich wiederherstellen? Ihre aktuellen Änderungen werden als neue Version gespeichert.",
+  "confirm.deleteVersion.message": "Möchten Sie diese Version wirklich löschen?",
+  "tooltip.restore": "Diese Version wiederherstellen",
+  "tooltip.version.delete": "Diese Version löschen",
+  "tooltip.compare": "Mit der aktuellen Version vergleichen",
+  "loading": "Wird geladen...",
+  "close": "Schließen",
+
+  "versionCompare.title": "Versionen vergleichen",
+  "versionCompare.comparing": "Version #{old} wird mit der aktuellen Version verglichen",
+  "versionCompare.tab.design": "Design (JSON)",
+  "versionCompare.tab.html": "HTML",
+  "versionCompare.tab.text": "Text",
+  "versionCompare.tab.subject": "Betreff",
+  "versionCompare.tab.name": "Name"
+}
