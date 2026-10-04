@@ -1,11 +1,11 @@
-import axios from "axios";
+import { getFetchClient } from "@strapi/strapi/admin";
 import { pluginName } from "../pluginId";
 
 /**
  * Fetch version history for a template
  */
 export const getVersionHistory = async (templateId: string) => {
-  const { data } = await axios.get(`/${pluginName}/templates/${templateId}/versions`);
+  const { data } = await getFetchClient().get(`/${pluginName}/templates/${templateId}/versions`);
   return data;
 };
 
@@ -13,7 +13,7 @@ export const getVersionHistory = async (templateId: string) => {
  * Get a specific version details
  */
 export const getVersionDetails = async (templateId: string, versionId: string) => {
-  const { data } = await axios.get(`/${pluginName}/templates/${templateId}/versions/${versionId}`);
+  const { data } = await getFetchClient().get(`/${pluginName}/templates/${templateId}/versions/${versionId}`);
   return data;
 };
 
@@ -21,9 +21,12 @@ export const getVersionDetails = async (templateId: string, versionId: string) =
  * Restore a template to a previous version
  */
 export const restoreTemplateVersion = async (templateId: string, versionId: string, reason?: string) => {
-  const { data } = await axios.post(`/${pluginName}/templates/${templateId}/versions/${versionId}/restore`, {
-    reason,
-  });
+  const { data } = await getFetchClient().post(
+    `/${pluginName}/templates/${templateId}/versions/${versionId}/restore`,
+    {
+      reason,
+    }
+  );
   return data;
 };
 
@@ -31,5 +34,5 @@ export const restoreTemplateVersion = async (templateId: string, versionId: stri
  * Delete a specific version
  */
 export const deleteTemplateVersion = async (templateId: string, versionId: string) => {
-  await axios.delete(`/${pluginName}/templates/${templateId}/versions/${versionId}`);
+  await getFetchClient().del(`/${pluginName}/templates/${templateId}/versions/${versionId}`);
 };
