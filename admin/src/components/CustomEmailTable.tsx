@@ -216,7 +216,9 @@ const CustomEmailTable = ({ data = [], reload }: { data: EmailTemplate[]; reload
                   <Typography textColor="neutral800">{entry.templateReferenceId}</Typography>
                 </Td>
                 <Td>
-                  <Typography textColor="neutral800">{entry.createdAt}</Typography>
+                  <Typography textColor="neutral800">
+                    {entry.createdAt ? String(entry.createdAt) : ""}
+                  </Typography>
                 </Td>
 
                 <Td>

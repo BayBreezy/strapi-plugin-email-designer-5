@@ -9,6 +9,10 @@
 
   "search.placeholder": "Rechercher des modèles par nom...",
 
+  "search.label": "Rechercher des modèles",
+
+  "search.clear": "Effacer la recherche",
+
   "designer.exportTemplates": "Exporter les Modèles d'Emails",
   "designer.importTemplates": "Importer les Modèles d'Emails",
   "error.loadingTemplates": "Une erreur est survenue lors du chargement des modèles d'emails",

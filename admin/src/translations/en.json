@@ -9,6 +9,10 @@
 
   "search.placeholder": "Search templates by name...",
 
+  "search.label": "Search templates",
+
+  "search.clear": "Clear search",
+
   "designer.exportTemplates": "Export Email Templates",
   "designer.importTemplates": "Import Email Templates",
   "error.loadingTemplates": "An error occurred while loading the email templates",

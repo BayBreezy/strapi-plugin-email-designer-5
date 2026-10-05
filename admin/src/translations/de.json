@@ -9,6 +9,10 @@
 
   "search.placeholder": "Vorlagen nach Namen durchsuchen...",
 
+  "search.label": "Vorlagen durchsuchen",
+
+  "search.clear": "Suche zurücksetzen",
+
   "designer.exportTemplates": "E-Mail-Vorlagen exportieren",
   "designer.importTemplates": "E-Mail-Vorlagen importieren",
   "error.loadingTemplates": "Beim Laden der E-Mail-Vorlagen ist ein Fehler aufgetreten",

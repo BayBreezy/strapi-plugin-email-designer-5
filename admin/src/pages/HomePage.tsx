@@ -97,10 +97,13 @@ const HomePage = () => {
                 <Searchbar
                   name="templateSearch"
                   onClear={handleClearSearch}
+                  clearLabel={translate("search.clear")}
                   value={searchTerm}
                   placeholder={translate("search.placeholder") || "Search templates by name..."}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleSearch(e.target.value)}
-                />
+                >
+                  {translate("search.label")}
+                </Searchbar>
               </SearchForm>
             </Box>
             <CustomEmailTable reload={init} data={searchResults} />

@@ -9,6 +9,10 @@
 
   "search.placeholder": "Buscar plantillas por nombre...",
 
+  "search.label": "Buscar plantillas",
+
+  "search.clear": "Borrar búsqueda",
+
   "designer.exportTemplates": "Exportar Plantillas",
   "designer.importTemplates": "Importar Plantillas",
   "error.loadingTemplates": "Ocurrió un error al cargar las plantillas de correo",
