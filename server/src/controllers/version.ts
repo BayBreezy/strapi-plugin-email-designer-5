@@ -43,7 +43,7 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
 
     try {
       // Get current user ID if available (optional)
-      const userId = ctx.state.user?.id || "system";
+      const userId = String(ctx.state.user?.id ?? "system");
 
       const updatedTemplate = await strapi
         .plugin(configImport.pluginName)

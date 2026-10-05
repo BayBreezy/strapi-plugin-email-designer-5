@@ -147,7 +147,7 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
             });
 
           // Get user ID from context if available
-          const userId = ctx.state.user?.id || "system";
+          const userId = String(ctx.state.user?.id ?? "system");
 
           // Get a fresh instance of the updated template to ensure we have the latest data (in case there are any lifecycle hooks that modify the data after update)
           const updatedTemplate = await strapi
