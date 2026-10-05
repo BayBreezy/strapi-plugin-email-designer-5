@@ -47,6 +47,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "lint-staged": {
     "*.{ts,tsx,json,js}": [
       "prettier --write",

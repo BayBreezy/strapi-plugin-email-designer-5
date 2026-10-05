@@ -56,7 +56,7 @@ How plugins are structured in v5 is way different than v4, so I am not trying to
 
 ## ✅ Prerequisites
 
-- Node v18+ (I recommend using [nvm](https://github.com/nvm-sh/nvm), there is a windows and mac/linux version)
+- Node v20+ (I recommend using [nvm](https://github.com/nvm-sh/nvm), there is a windows and mac/linux version)
 - A Strapi v5 project (`npx create-strapi-app@latest my-project`)
 
 ## ⬇️ Installation
