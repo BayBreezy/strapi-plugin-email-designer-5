@@ -37,6 +37,11 @@ const DesignerTabsContainer = ({
 }: DesignerTabsContainerProps) => {
   const translate = useTr();
 
+  const showHistory =
+    serverConfigLoaded && editorOptions?.enableVersioning !== false && !isCore && templateId !== "new";
+  // A stale `?tab=history` must not leave the user on an empty tab when versioning is disabled
+  const activeMode = mode === "history" && serverConfigLoaded && !showHistory ? "html" : mode;
+
   const handleTabChange = (selected: "html" | "text" | "history") => {
     onModeChange(selected);
 
@@ -52,13 +57,11 @@ const DesignerTabsContainer = ({
 
   return (
     <Box style={{ flex: 1, display: "flex", height: "calc(100dvh - 80px)" }}>
-      <Tabs.Root value={mode} onValueChange={handleTabChange}>
+      <Tabs.Root value={activeMode} onValueChange={handleTabChange}>
         <Tabs.List aria-label="Switch between the html, text and history design">
           <Tabs.Trigger value="html">{translate("designer.tab.html")}</Tabs.Trigger>
           <Tabs.Trigger value="text">{translate("designer.tab.text")}</Tabs.Trigger>
-          {!isCore && templateId !== "new" && (
-            <Tabs.Trigger value="history">{translate("designer.tab.history")}</Tabs.Trigger>
-          )}
+          {showHistory && <Tabs.Trigger value="history">{translate("designer.tab.history")}</Tabs.Trigger>}
         </Tabs.List>
 
         <Tabs.Content style={{ height: "calc(100vh - 160px)" }} value="html">
@@ -74,7 +77,7 @@ const DesignerTabsContainer = ({
           <DesignerTextEditor bodyText={bodyText} onChange={onBodyTextChange} />
         </Tabs.Content>
 
-        {!isCore && templateId !== "new" && (
+        {showHistory && (
           <Tabs.Content style={{ height: "calc(100vh - 160px)", overflow: "auto" }} value="history">
             <VersionHistoryTab templateId={templateId || ""} onVersionRestore={onVersionRestore} />
           </Tabs.Content>

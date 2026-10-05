@@ -1,4 +1,6 @@
+import type { Core } from "@strapi/strapi";
 import type { EmailEditorProps } from "react-email-editor";
+import { disableVersioningContentTypes } from "../content-types";
 
 export type EmailConfig = Pick<
   NonNullable<EmailEditorProps["options"]>,
@@ -16,11 +18,26 @@ export type EmailConfig = Pick<
   | "customCSS"
   | "customJS"
   | "textDirection"
->;
+> & {
+  /**
+   * Keep a history of the changes made to each template.
+   *
+   * When set to `false`, the version content type is removed from the plugin.
+   * **Strapi will drop the existing versions table on the next start**, so any stored history is lost.
+   *
+   * @default true
+   */
+  enableVersioning?: boolean;
+};
+
+/** Whether template versioning is enabled in the plugin configuration */
+export const isVersioningEnabled = (strapi: Core.Strapi) =>
+  strapi.config.get<boolean>("plugin::email-designer-5.enableVersioning", true) !== false;
 
 export default {
   default: () =>
     ({
+      enableVersioning: true,
       mergeTagsConfig: {
         autocompleteTriggerChar: "@",
         sort: false,
@@ -166,7 +183,13 @@ export default {
         },
       },
     }) as unknown as EmailConfig,
-  validator() {},
+  // Runs after the user config is merged but before the content types are registered,
+  // which is the only moment the content types can still be changed.
+  validator(config: Partial<EmailConfig>) {
+    if (config.enableVersioning === false) {
+      disableVersioningContentTypes();
+    }
+  },
   /** The name of the strapi plugin
    *
    * @default "email-designer-5"

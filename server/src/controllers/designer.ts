@@ -3,7 +3,7 @@ import { htmlToText } from "html-to-text";
 import { Context } from "koa";
 import _, { isEqual, isNil } from "lodash";
 import * as yup from "yup";
-import configImport from "../config";
+import configImport, { isVersioningEnabled } from "../config";
 
 const isValidRefId = yup.number().required().label("Template reference ID").min(0);
 
@@ -126,9 +126,10 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
         // Check if any of the following changed: design, name, subject, bodyHtml, bodyText, tags
 
         if (
-          !isEqual(oldTemplate.design, ctx.request.body.design) ||
-          oldTemplate.name !== ctx.request.body.name ||
-          oldTemplate.subject !== ctx.request.body.subject
+          isVersioningEnabled(strapi) &&
+          (!isEqual(oldTemplate.design, ctx.request.body.design) ||
+            oldTemplate.name !== ctx.request.body.name ||
+            oldTemplate.subject !== ctx.request.body.subject)
         ) {
           // Track which fields changed
           const changedFields = [];

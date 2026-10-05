@@ -1,11 +1,15 @@
 import type { Core } from "@strapi/strapi";
-import configImport from "../config";
+import configImport, { isVersioningEnabled } from "../config";
+
+const VERSIONING_DISABLED = "Template versioning is disabled";
 
 const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
   /**
    * Get version history for a template
    */
   getVersionHistory: async (ctx) => {
+    if (!isVersioningEnabled(strapi)) return ctx.notFound(VERSIONING_DISABLED);
+
     const { templateId } = ctx.params;
     try {
       const versions = await strapi
@@ -22,6 +26,8 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
    * Get a specific version
    */
   getVersion: async (ctx) => {
+    if (!isVersioningEnabled(strapi)) return ctx.notFound(VERSIONING_DISABLED);
+
     const { versionId } = ctx.params;
     try {
       const version = await strapi.plugin(configImport.pluginName).service("version").getVersion(versionId);
@@ -38,6 +44,8 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
    * Restore a template to a previous version
    */
   restoreVersion: async (ctx) => {
+    if (!isVersioningEnabled(strapi)) return ctx.notFound(VERSIONING_DISABLED);
+
     const { templateId, versionId } = ctx.params;
     const { reason } = ctx.request.body;
 
@@ -63,6 +71,8 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
    * Delete a specific version
    */
   deleteVersion: async (ctx) => {
+    if (!isVersioningEnabled(strapi)) return ctx.notFound(VERSIONING_DISABLED);
+
     const { versionId } = ctx.params;
 
     try {

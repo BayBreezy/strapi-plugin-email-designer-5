@@ -16,6 +16,9 @@ const DesignerHTMLEditor = ({
   serverConfigLoaded,
   onLoad,
 }: DesignerHTMLEditorProps) => {
+  // `enableVersioning` is a plugin option, not an Unlayer one
+  const { enableVersioning, ...unlayerOptions } = editorOptions ?? {};
+
   return (
     <Box
       style={{
@@ -25,7 +28,7 @@ const DesignerHTMLEditor = ({
     >
       {serverConfigLoaded && (
         <StrictMode>
-          <EmailEditor options={editorOptions} minHeight="100%" ref={emailEditorRef} onLoad={onLoad} />
+          <EmailEditor options={unlayerOptions} minHeight="100%" ref={emailEditorRef} onLoad={onLoad} />
         </StrictMode>
       )}
     </Box>

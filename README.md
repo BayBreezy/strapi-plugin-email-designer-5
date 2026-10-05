@@ -16,6 +16,7 @@ Design your own email templates directly from the Strapi admin panel and use the
   - [🎚️ Plugin Configuration](#️-plugin-configuration)
     - [📧 Nodemailer](#-nodemailer)
     - [⚙️ Default configuration](#️-default-configuration)
+    - [🕓 Template versioning](#-template-versioning)
   - [▶️ Usage](#️-usage)
     - [✅ Creating a new design](#-creating-a-new-design)
     - [✅ Importing a design](#-importing-a-design)
@@ -326,6 +327,26 @@ export default ({ env }) => ({
   },
 });
 ```
+
+### 🕓 Template versioning
+
+Every time a template's design, name or subject changes, the plugin stores a version of it that you can compare and restore from the **History** tab. Versioning is enabled by default. If you don't need it, you can turn it off with the `enableVersioning` option:
+
+```ts
+export default ({ env }) => ({
+  "email-designer-5": {
+    enabled: true,
+    config: {
+      enableVersioning: false,
+    },
+  },
+});
+```
+
+When disabled, the version content type is not registered, no versions are saved, the History tab is hidden and the `/versions` routes return a 404.
+
+> [!WARNING]
+> Strapi removes the database table of a content type that is no longer registered. Setting `enableVersioning` to `false` on an existing project **permanently deletes the stored version history** the next time Strapi starts. Turning it back on later creates a new, empty history.
 
 ## ▶️ Usage
 

@@ -63,7 +63,10 @@ export type EmailConfig = Pick<
   | "customCSS"
   | "customJS"
   | "textDirection"
->;
+> & {
+  /** Whether the template version history is enabled. Defaults to `true` */
+  enableVersioning?: boolean;
+};
 
 /**
  * Represents a version of an email template in the version history

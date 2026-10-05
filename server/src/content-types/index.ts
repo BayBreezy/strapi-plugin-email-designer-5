@@ -1,4 +1,4 @@
-export default {
+const contentTypes: Record<string, any> = {
   "email-designer-template-version": {
     schema: {
       kind: "collectionType",
@@ -66,4 +66,15 @@ export default {
       },
     },
   },
+};
+
+export default contentTypes;
+
+/**
+ * Removes the version content type, and the relation pointing to it, from the plugin.
+ * Mutates the object the plugin exports, so it must be called before Strapi registers the content types.
+ */
+export const disableVersioningContentTypes = () => {
+  delete contentTypes["email-designer-template-version"];
+  delete contentTypes["email-designer-template"].schema.attributes.versions;
 };
