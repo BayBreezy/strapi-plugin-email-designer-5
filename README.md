@@ -1,6 +1,6 @@
-<img src="/Email Designer Logo.jpg" style="height: 70px; margin: 0px; border-radius: 12px;" />
+<img src="./Email%20Designer%20Logo.jpg" alt="Strapi Email Designer logo" width="70" height="70" style="border-radius: 12px;" />
 
-# <img src="/Email Designer Logo.jpg" style="height: 26px; margin: 0px; border-radius: 4px;" /> Strapi Email Designer (v5)
+# <img src="./Email%20Designer%20Logo.jpg" alt="" width="26" height="26" style="border-radius: 4px;" /> Strapi Email Designer (v5)
 
 Design your own email templates directly from the Strapi admin panel and use the magic to send programmatically email from your controllers / services.
 
