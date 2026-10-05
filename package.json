@@ -74,11 +74,11 @@
     "decode-html": "^2.0.0",
     "defu": "^6.1.7",
     "destr": "^2.0.5",
-    "html-to-text": "^9.0.5",
+    "html-to-text": "^10.0.1",
     "lodash": "^4.18.1",
     "mustache": "^4.2.0",
     "react-diff-viewer-continued": "^4.4.0",
-    "react-email-editor": "^1.8.0",
+    "react-email-editor": "^2.1.3",
     "react-icons": "^5.7.0",
     "react-intl": "^6.8.9",
     "react-textarea-autosize": "^8.5.9",
@@ -86,22 +86,22 @@
     "yup": "^1.7.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.3",
-    "@commitlint/config-conventional": "^20.5.3",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
-    "@strapi/sdk-plugin": "^5.4.0",
+    "@strapi/sdk-plugin": "^6.1.1",
     "@strapi/strapi": "^5.56.0",
     "@strapi/typescript-utils": "^5.56.0",
     "@types/html-to-text": "^9.0.4",
     "@types/lodash": "^4.17.25",
     "@types/mustache": "^4.2.6",
-    "@types/nodemailer": "^7.0.12",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^18.3.31",
     "@types/react-dom": "^18.3.7",
     "@types/react-email-editor": "^1.7.0",
     "changelogen": "^0.6.2",
     "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
+    "lint-staged": "^17.6.0",
     "prettier": "^3.9.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -122,5 +122,9 @@
     "name": "email-designer-5",
     "displayName": "Email Designer 5",
     "description": "Strapi Email Designer (v5)"
-  }
+  },
+  "trustedDependencies": [
+    "@swc/core",
+    "core-js-pure"
+  ]
 }
