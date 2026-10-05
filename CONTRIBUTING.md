@@ -11,7 +11,7 @@ This project is committed to providing a welcoming and inclusive environment for
 ### Prerequisites
 
 - Node.js (v20 or higher)
-- npm
+- [Bun](https://bun.sh) (package manager)
 - Strapi v5 knowledge
 - TypeScript familiarity
 
@@ -35,7 +35,7 @@ This project is committed to providing a welcoming and inclusive environment for
 
 4. **Install dependencies**
    ```bash
-   npm install
+   bun install
    ```
 
 5. **Create a feature branch**
@@ -75,7 +75,7 @@ strapi-plugin-email-designer-5/
 
 ```bash
 # Build both admin and server
-npm run build
+bun run build
 ```
 
 ### Code Style
@@ -295,7 +295,7 @@ If your change affects user-facing behavior, update [README.md](README.md):
 The maintainers handle releases using:
 
 ```bash
-npm run release
+bun run release
 ```
 
 This:

@@ -29,7 +29,7 @@ If applicable, add screenshots to help explain the problem.
 - Strapi Version: 
 - Plugin Version: 
 - Node Version: 
-- npm/yarn Version: 
+- Package manager & version (npm/yarn/pnpm/bun): 
 - Database: 
 - OS: 
 - Browser (if applicable): 

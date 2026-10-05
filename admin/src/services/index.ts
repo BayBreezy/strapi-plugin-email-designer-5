@@ -1,7 +1,7 @@
 import { getFetchClient } from "@strapi/strapi/admin";
 import dayjs from "dayjs";
 import { pluginName } from "../pluginId";
-import { EmailConfig, EmailTemplate } from "../types";
+import { EmailConfig, EmailTemplate, Version } from "../types";
 
 /**
  * Date format for displaying dates in the UI
@@ -138,7 +138,7 @@ export const downloadTemplate = async (id: string, type: "html" | "json") => {
  * Fetch version history for a template
  */
 export const getVersionHistory = async (templateId: string) => {
-  const { data } = await fetchClient().get(`/${pluginName}/templates/${templateId}/versions`);
+  const { data } = await fetchClient().get<Version[]>(`/${pluginName}/templates/${templateId}/versions`);
   return data;
 };
 
