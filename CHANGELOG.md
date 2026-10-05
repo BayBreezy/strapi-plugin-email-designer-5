@@ -1,5 +1,47 @@
 # Changelog
 
+## v0.0.10
+
+[compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.9...v0.0.10)
+
+### 🚀 Enhancements
+
+- **templates:** Add different templates to repo ([ce78914](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/ce78914))
+- **versioning:** Add enableVersioning option to make template versioning optional ([0722efa](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/0722efa))
+
+### 🩹 Fixes
+
+- **security:** Require admin authentication for admin routes ([795e2bc](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/795e2bc))
+- **version:** Store changedBy as a string ([8933ce2](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/8933ce2))
+- **admin:** Resolve type errors in the template list and search bar ([dd1ff2c](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/dd1ff2c))
+- **admin:** Resolve remaining type errors in the designer and version history ([56e6e97](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/56e6e97))
+
+### 📖 Documentation
+
+- **readme:** Document Strapi Cloud CSP setup and fix middlewares filename ([fb6b064](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/fb6b064))
+- **readme:** Fix logo paths and size ([0620860](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/0620860))
+
+### 🏡 Chore
+
+- Update dependencies and switch to bun ([e181d4b](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/e181d4b))
+- Update dependencies and add trustedDependencies ([e46f2ac](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/e46f2ac))
+- Add MCP config for the Strapi docs server ([708a36c](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/708a36c))
+- Require Node 20 or higher ([cdf4850](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/cdf4850))
+
+### 🎨 Styles
+
+- Format the repository with prettier ([3bd5555](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/3bd5555))
+
+### 🤖 CI
+
+- Add build and type-check workflow ([2d9799c](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/2d9799c))
+- Update GitHub Actions to their latest major versions ([f7ccb6c](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/f7ccb6c))
+
+### ❤️ Contributors
+
+- Behon Baker ([@BayBreezy](https://github.com/BayBreezy))
+- Florian Krueger <florian.krueger@kantan.eu>
+
 ## v0.0.9
 
 [compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.8...v0.0.9)
