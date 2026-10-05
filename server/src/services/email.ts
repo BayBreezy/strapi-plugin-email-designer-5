@@ -67,8 +67,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   const isEmailProviderConfigured = () => {
     const emailConfig = strapi.config.get("plugin::email") as { provider?: string } | undefined;
     const pluginEmail = strapi.plugin("email") as
-      | { provider?: { send?: (...args: any[]) => any } }
-      | undefined;
+      { provider?: { send?: (...args: any[]) => any } } | undefined;
     const provider = pluginEmail?.provider;
     // If the provider is 'sendmail', it is not configured.
     if (emailConfig?.provider === "sendmail") return false;

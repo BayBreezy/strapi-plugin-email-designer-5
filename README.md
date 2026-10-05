@@ -584,9 +584,7 @@ await strapi
       },
     },
     { templateReferenceId: 20 },
-    {
-      /* data */
-    }
+    {/* data */}
   );
 ```
 

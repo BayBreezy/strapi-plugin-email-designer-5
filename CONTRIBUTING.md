@@ -18,22 +18,26 @@ This project is committed to providing a welcoming and inclusive environment for
 ### Setting Up Development Environment
 
 1. **Fork the repository**
+
    ```bash
    # Visit https://github.com/BayBreezy/strapi-plugin-email-designer-5 and click Fork
    ```
 
 2. **Clone your fork**
+
    ```bash
    git clone https://github.com/[your-username]/strapi-plugin-email-designer-5.git
    cd strapi-plugin-email-designer-5
    ```
 
 3. **Add upstream remote**
+
    ```bash
    git remote add upstream https://github.com/BayBreezy/strapi-plugin-email-designer-5.git
    ```
 
 4. **Install dependencies**
+
    ```bash
    bun install
    ```
@@ -98,13 +102,13 @@ bun run build
 /**
  * Sends a templated email with the provided data.
  * Supports both Strapi core templates and custom email designs.
- * 
+ *
  * @param {string} templateId - The ID of the email template to send
  * @param {object} data - Template variables to render (user, token, etc.)
  * @param {string} recipientEmail - Email address of the recipient
  * @returns {Promise<void>}
  * @throws {Error} If template not found or email provider not configured
- * 
+ *
  * @example
  * await sendTemplatedEmail('welcome', { user: { email: 'test@example.com' } }, 'test@example.com')
  */
@@ -129,6 +133,7 @@ bun run build
 ### 3. Email Header/Template Features
 
 When modifying email rendering:
+
 - Use Mustache templating syntax `{{ variable }}`
 - For unescaped content use triple braces `{{{ html }}}`
 - Test with both static and dynamic template variables
@@ -144,6 +149,7 @@ When modifying email rendering:
 4. Add same keys to [admin/src/translations/fr.json](admin/src/translations/fr.json) with French translations
 
 **Translation Key Naming Convention:**
+
 - Use dot notation: `feature.action.description`
 - Examples: `testSend.modal.title`, `search.placeholder`, `versionHistory.restore`
 - Group related translations together
@@ -163,6 +169,7 @@ footer
 ```
 
 **Types:**
+
 - `feat:` A new feature
 - `fix:` A bug fix
 - `docs:` Documentation changes
@@ -173,6 +180,7 @@ footer
 - `i18n:` Translation updates
 
 **Examples:**
+
 ```
 feat(test-send): add email provider status checking
 
@@ -231,6 +239,7 @@ git rebase --continue
 ## Submitting a Pull Request
 
 1. **Push your branch**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -279,6 +288,7 @@ Use the [Feature Request](/.github/ISSUE_TEMPLATE/feature_request.md) template a
 ### README Updates
 
 If your change affects user-facing behavior, update [README.md](README.md):
+
 - Add before/after examples for complex features
 - Document new configuration options
 - Explain how to use new features
@@ -299,6 +309,7 @@ bun run release
 ```
 
 This:
+
 1. Formats code
 2. Builds the plugin
 3. Generates changelog
