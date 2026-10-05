@@ -13,6 +13,7 @@ Design your own email templates directly from the Strapi admin panel and use the
   - [✅ Prerequisites](#-prerequisites)
   - [⬇️ Installation](#️-installation)
   - [🎚️ Middleware Configuration](#️-middleware-configuration)
+    - [☁️ Strapi Cloud](#️-strapi-cloud)
   - [🎚️ Plugin Configuration](#️-plugin-configuration)
     - [📧 Nodemailer](#-nodemailer)
     - [⚙️ Default configuration](#️-default-configuration)
@@ -68,7 +69,7 @@ npm install strapi-plugin-email-designer-5
 
 ## 🎚️ Middleware Configuration
 
-By default, Strapi's security is tight. You will need to add the following to your `config/middleware.ts` file:
+By default, Strapi's security is tight. You will need to add the following to your `config/middlewares.ts` file:
 
 ```ts
 {
@@ -87,6 +88,41 @@ By default, Strapi's security is tight. You will need to add the following to yo
 ```
 
 Ensure that you replace the `"strapi::security"` line in the file with the above.
+
+### ☁️ Strapi Cloud
+
+On [Strapi Cloud](https://docs.strapi.io/cloud/advanced/middlewares), `NODE_ENV` is always `production` and the platform overwrites the global `config/middlewares` file on deploy, so the change above will have no effect and the editor will be blocked with an error like `Loading the script 'https://editor.unlayer.com/embed.js?2' violates the following Content Security Policy directive: "script-src 'self'"`.
+
+Put the change in `config/env/production/middlewares.ts` (or `.js`) instead. This file **fully replaces** the global middleware array, so it must list every default middleware, not just `strapi::security`:
+
+```ts
+export default [
+  "strapi::errors",
+  {
+    name: "strapi::security",
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          "script-src": ["'self'", "'unsafe-inline'", "editor.unlayer.com"],
+          "frame-src": ["'self'", "editor.unlayer.com"],
+          upgradeInsecureRequests: null,
+        },
+      },
+    },
+  },
+  "strapi::cors",
+  "strapi::poweredBy",
+  "strapi::logger",
+  "strapi::query",
+  "strapi::body",
+  "strapi::session",
+  "strapi::favicon",
+  "strapi::public",
+];
+```
+
+You can keep your existing `config/middlewares` file as it is, the production file takes precedence on Strapi Cloud. Redeploy after committing the change. See the [Strapi Cloud middleware docs](https://docs.strapi.io/cloud/advanced/middlewares#custom-content-security-policy-csp) for details.
 
 ## 🎚️ Plugin Configuration
 
