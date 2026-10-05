@@ -74,7 +74,7 @@ const DesignerHeader = ({
       )}
 
       <Box style={{ width: "100%" }}>
-        <Field.Root disabled={isCore} required>
+        <Field.Root required>
           <Field.Label>{translate("input.label.templateName")}</Field.Label>
           <Field.Input
             disabled={isCore}

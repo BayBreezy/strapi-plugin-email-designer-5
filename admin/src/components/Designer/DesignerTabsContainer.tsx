@@ -57,7 +57,10 @@ const DesignerTabsContainer = ({
 
   return (
     <Box style={{ flex: 1, display: "flex", height: "calc(100dvh - 80px)" }}>
-      <Tabs.Root value={activeMode} onValueChange={handleTabChange}>
+      <Tabs.Root
+        value={activeMode}
+        onValueChange={(selected: string) => handleTabChange(selected as "html" | "text" | "history")}
+      >
         <Tabs.List aria-label="Switch between the html, text and history design">
           <Tabs.Trigger value="html">{translate("designer.tab.html")}</Tabs.Trigger>
           <Tabs.Trigger value="text">{translate("designer.tab.text")}</Tabs.Trigger>

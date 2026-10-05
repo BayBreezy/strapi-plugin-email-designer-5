@@ -243,11 +243,11 @@ const VersionHistoryTab = ({ templateId, onVersionRestore }: VersionHistoryTabPr
                 <Td>
                   {/* Check if it was restored from prev version */}
                   {"restored" in version.changesSummary && version.changesSummary.restored ? (
-                    <Typography textColor="neutral800" size="S">
+                    <Typography textColor="neutral800">
                       Restored from version {version.changesSummary.restoredFromVersion}
                     </Typography>
                   ) : (
-                    <Typography textColor="neutral800" size="S">
+                    <Typography textColor="neutral800">
                       {"changed" in version.changesSummary
                         ? version.changesSummary.changed?.join(", ") || "-"
                         : "-"}
