@@ -1,0 +1,136 @@
+{
+  "page.title": "Email Designer (v5)",
+  "page.design.title": "Email Designer",
+  "page.subTitle": "صمّم رسائل البريد الإلكتروني بسهولة داخل لوحة إدارة Strapi 5",
+  "plugin.name": "Email Designer 5",
+
+  "page.home.cta": "إنشاء بريد إلكتروني جديد",
+  "page.home.cta.tooltip": "انقر لبدء إنشاء بريد إلكتروني جديد",
+
+  "search.placeholder": "البحث عن القوالب بالاسم...",
+
+  "search.label": "البحث في القوالب",
+
+  "search.clear": "مسح البحث",
+
+  "designer.exportTemplates": "تصدير قوالب البريد الإلكتروني",
+  "designer.importTemplates": "استيراد قوالب البريد الإلكتروني",
+  "error.loadingTemplates": "حدث خطأ أثناء تحميل قوالب البريد الإلكتروني",
+
+  "input.label.templateReferenceId": "معرّف مرجع القالب",
+  "input.placeholder.templateReferenceId": "مثال: 1",
+  "input.label.templateName": "اسم القالب",
+  "input.placeholder.templateName": "مثال: بريد الترحيب",
+  "input.label.subject": "موضوع البريد الإلكتروني",
+  "input.placeholder.subject": "مثال: مرحبًا بك في منصتنا",
+
+  "import": "استيراد",
+  "pleaseWait": "يرجى الانتظار...",
+  "importingTemplates": "جارٍ استيراد قوالب البريد الإلكتروني...",
+  "error.importingTemplates": "حدث خطأ أثناء عملية الاستيراد",
+  "success.importingTemplates": "تم استيراد قوالب البريد الإلكتروني بنجاح",
+
+  "tooltip.copyTemplateId": "نسخ معرّف القالب",
+  "success.copyTemplateId": "تم نسخ معرّف القالب إلى الحافظة",
+
+  "noName": "بدون اسم",
+  "success": "نجاح",
+  "save": "حفظ",
+  "cancel": "إلغاء",
+  "confirm": "تأكيد",
+  "actions": "الإجراءات",
+  "action": "إجراء",
+  "action.restore": "استعادة",
+  "action.delete": "حذف",
+
+  "success.single.message": "تم استيراد قالب البريد الإلكتروني بنجاح",
+  "success.message": "تم حفظ قالب البريد الإلكتروني بنجاح",
+  "success.duplicate": "تم تكرار قالب البريد الإلكتروني بنجاح",
+  "success.delete": "تم حذف قالب البريد الإلكتروني بنجاح",
+
+  "confirm.title": "تأكيد الإجراء",
+  "confirm.singleImport": "هل أنت متأكد من أنك تريد استيراد قالب البريد الإلكتروني هذا؟ سيؤدي ذلك إلى استبدال التصميم الحالي الذي تعمل عليه.",
+  "confirm.import.message": "هل أنت متأكد من أنك تريد استيراد قوالب البريد الإلكتروني هذه؟ سيتم استبدال القوالب الموجودة التي لها نفس معرّف المرجع.",
+  "confirm.duplicate.message": "هل أنت متأكد من أنك تريد تكرار قالب البريد الإلكتروني هذا؟",
+  "confirm.delete.message": "هل أنت متأكد من أنك تريد حذف قالب البريد الإلكتروني هذا؟",
+
+  "error": "خطأ",
+  "error.message": "حدث خطأ أثناء حفظ قالب البريد الإلكتروني",
+  "error.duplicate": "حدث خطأ أثناء تكرار قالب البريد الإلكتروني",
+  "error.delete": "حدث خطأ أثناء حذف قالب البريد الإلكتروني",
+
+  "tooltip.edit": "تعديل قالب البريد الإلكتروني هذا",
+  "tooltip.delete": "حذف قالب البريد الإلكتروني هذا",
+  "tooltip.duplicate": "تكرار قالب البريد الإلكتروني هذا",
+  "tooltip.downloadHtml": "تنزيل HTML",
+  "tooltip.downloadDesign": "تنزيل التصميم (JSON)",
+
+  "goBack": "رجوع",
+
+  "designer.tab.html": "HTML",
+  "designer.tab.text": "نص",
+
+  "testSend.action": "إرسال تجريبي",
+  "testSend.title": "إرسال بريد إلكتروني تجريبي",
+  "testSend.to.label": "إلى",
+  "testSend.to.placeholder": "you@example.com",
+  "testSend.data.label": "البيانات (JSON)",
+  "testSend.data.placeholder": "{\"name\": \"Jane\"}",
+  "testSend.data.help": "اختياري. يُستخدم لعرض متغيرات Mustache.",
+  "testSend.loadResetPasswordData": "تحميل بيانات إعادة تعيين كلمة المرور",
+  "testSend.loadEmailConfirmationData": "تحميل بيانات تأكيد البريد الإلكتروني",
+  "testSend.config.checking": "جارٍ التحقق من إعدادات مزوّد البريد الإلكتروني...",
+  "testSend.sending": "جارٍ الإرسال...",
+  "testSend.success": "تم إرسال البريد الإلكتروني التجريبي بنجاح",
+  "testSend.error.noRecipient": "يرجى إدخال البريد الإلكتروني للمستلم",
+  "testSend.error.invalidJson": "بيانات JSON غير صالحة",
+  "testSend.error.notConfigured": "مزوّد البريد الإلكتروني غير مهيأ",
+  "testSend.error.loadSampleData": "فشل تحميل البيانات النموذجية",
+  "testSend.error.failed": "فشل إرسال البريد الإلكتروني التجريبي",
+
+  "table.header.name": "اسم القالب",
+  "table.header.templateReferenceId": "معرّف مرجع القالب",
+  "table.header.createdAt": "تاريخ الإنشاء",
+  "table.header.updatedAt": "تاريخ التحديث",
+  "table.header.coreEmailType": "اسم البريد الإلكتروني الأساسي",
+
+  "table.action.edit": "تعديل",
+  "table.action.delete": "حذف",
+
+  "emailTypes.core.tab.label": "رسائل البريد الأساسية",
+  "emailTypes.custom.tab.label": "رسائل البريد المخصصة",
+
+  "emailTypes.user-address-confirmation": "تأكيد عنوان المستخدم",
+  "emailTypes.reset-password": "إعادة تعيين كلمة المرور",
+  "user-address-confirmation": "تأكيد عنوان المستخدم",
+  "reset-password": "إعادة تعيين كلمة المرور",
+
+  "customTable.addDesign": "انقر لإضافة تصميم جديد",
+  "customTable.noDesigns": "لا توجد تصاميم متاحة بعد",
+
+  "error.noReferenceId.title": "معرّف المرجع مطلوب",
+  "error.noReferenceId.message": "يرجى إدخال معرّف مرجع لقالب البريد الإلكتروني",
+
+  "designer.tab.history": "السجل",
+  "versionHistory.noVersions": "لا يوجد سجل إصدارات",
+  "error.loadingVersions": "حدث خطأ أثناء تحميل سجل الإصدارات",
+  "error.restoreVersion": "حدث خطأ أثناء استعادة الإصدار",
+  "error.deleteVersion": "حدث خطأ أثناء حذف الإصدار",
+  "success.versionRestored": "تمت استعادة الإصدار بنجاح",
+  "success.versionDeleted": "تم حذف الإصدار بنجاح",
+  "confirm.restoreVersion.message": "هل أنت متأكد من أنك تريد استعادة هذا الإصدار؟ سيتم حفظ تغييراتك الحالية كإصدار جديد.",
+  "confirm.deleteVersion.message": "هل أنت متأكد من أنك تريد حذف هذا الإصدار؟",
+  "tooltip.restore": "الاستعادة إلى هذا الإصدار",
+  "tooltip.version.delete": "حذف هذا الإصدار",
+  "tooltip.compare": "المقارنة مع الإصدار الحالي",
+  "loading": "جارٍ التحميل...",
+  "close": "إغلاق",
+
+  "versionCompare.title": "مقارنة الإصدارات",
+  "versionCompare.comparing": "مقارنة الإصدار #{old} بالإصدار الحالي",
+  "versionCompare.tab.design": "التصميم (JSON)",
+  "versionCompare.tab.html": "HTML",
+  "versionCompare.tab.text": "نص",
+  "versionCompare.tab.subject": "الموضوع",
+  "versionCompare.tab.name": "الاسم"
+}

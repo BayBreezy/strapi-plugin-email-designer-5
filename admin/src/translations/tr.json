@@ -1,0 +1,136 @@
+{
+  "page.title": "Email Designer (v5)",
+  "page.design.title": "Email Designer",
+  "page.subTitle": "Strapi 5 yönetim panelinde e-postaları kolayca tasarlayın",
+  "plugin.name": "Email Designer 5",
+
+  "page.home.cta": "Yeni e-posta oluştur",
+  "page.home.cta.tooltip": "Yeni bir e-posta oluşturmaya başlamak için tıklayın",
+
+  "search.placeholder": "Şablonları ada göre ara...",
+
+  "search.label": "Şablonlarda ara",
+
+  "search.clear": "Aramayı temizle",
+
+  "designer.exportTemplates": "E-posta şablonlarını dışa aktar",
+  "designer.importTemplates": "E-posta şablonlarını içe aktar",
+  "error.loadingTemplates": "E-posta şablonları yüklenirken bir hata oluştu",
+
+  "input.label.templateReferenceId": "Şablon referans kimliği",
+  "input.placeholder.templateReferenceId": "Ör. 1",
+  "input.label.templateName": "Şablon adı",
+  "input.placeholder.templateName": "Ör. Hoş geldiniz e-postası",
+  "input.label.subject": "E-posta konusu",
+  "input.placeholder.subject": "Ör. Platformumuza hoş geldiniz",
+
+  "import": "İçe aktar",
+  "pleaseWait": "Lütfen bekleyin...",
+  "importingTemplates": "E-posta şablonları içe aktarılıyor...",
+  "error.importingTemplates": "İçe aktarma sırasında bir hata oluştu",
+  "success.importingTemplates": "E-posta şablonları başarıyla içe aktarıldı",
+
+  "tooltip.copyTemplateId": "Şablon kimliğini kopyala",
+  "success.copyTemplateId": "Şablon kimliği panoya kopyalandı",
+
+  "noName": "Adsız",
+  "success": "Başarılı",
+  "save": "Kaydet",
+  "cancel": "İptal",
+  "confirm": "Onayla",
+  "actions": "İşlemler",
+  "action": "İşlem",
+  "action.restore": "Geri yükle",
+  "action.delete": "Sil",
+
+  "success.single.message": "E-posta şablonu başarıyla içe aktarıldı",
+  "success.message": "E-posta şablonu başarıyla kaydedildi",
+  "success.duplicate": "E-posta şablonu başarıyla çoğaltıldı",
+  "success.delete": "E-posta şablonu başarıyla silindi",
+
+  "confirm.title": "İşlemi onayla",
+  "confirm.singleImport": "Bu e-posta şablonunu içe aktarmak istediğinizden emin misiniz? Bu işlem, üzerinde çalıştığınız mevcut tasarımın yerine geçecektir.",
+  "confirm.import.message": "Bu e-posta şablonlarını içe aktarmak istediğinizden emin misiniz? Aynı referans kimliğine sahip mevcut şablonların yerine geçecektir.",
+  "confirm.duplicate.message": "Bu e-posta şablonunu çoğaltmak istediğinizden emin misiniz?",
+  "confirm.delete.message": "Bu e-posta şablonunu silmek istediğinizden emin misiniz?",
+
+  "error": "Hata",
+  "error.message": "E-posta şablonu kaydedilirken bir hata oluştu",
+  "error.duplicate": "E-posta şablonu çoğaltılırken bir hata oluştu",
+  "error.delete": "E-posta şablonu silinirken bir hata oluştu",
+
+  "tooltip.edit": "Bu e-posta şablonunu düzenle",
+  "tooltip.delete": "Bu e-posta şablonunu sil",
+  "tooltip.duplicate": "Bu e-posta şablonunu çoğalt",
+  "tooltip.downloadHtml": "HTML indir",
+  "tooltip.downloadDesign": "Tasarımı indir (JSON)",
+
+  "goBack": "Geri dön",
+
+  "designer.tab.html": "HTML",
+  "designer.tab.text": "Metin",
+
+  "testSend.action": "Test gönderimi",
+  "testSend.title": "Test e-postası gönder",
+  "testSend.to.label": "Alıcı",
+  "testSend.to.placeholder": "you@example.com",
+  "testSend.data.label": "Veri (JSON)",
+  "testSend.data.placeholder": "{\"name\": \"Jane\"}",
+  "testSend.data.help": "İsteğe bağlı. Mustache değişkenlerini işlemek için kullanılır.",
+  "testSend.loadResetPasswordData": "Şifre sıfırlama verilerini yükle",
+  "testSend.loadEmailConfirmationData": "E-posta doğrulama verilerini yükle",
+  "testSend.config.checking": "E-posta sağlayıcı yapılandırması kontrol ediliyor...",
+  "testSend.sending": "Gönderiliyor...",
+  "testSend.success": "Test e-postası başarıyla gönderildi",
+  "testSend.error.noRecipient": "Lütfen bir alıcı e-posta adresi girin",
+  "testSend.error.invalidJson": "Geçersiz JSON verisi",
+  "testSend.error.notConfigured": "E-posta sağlayıcı yapılandırılmamış",
+  "testSend.error.loadSampleData": "Örnek veriler yüklenemedi",
+  "testSend.error.failed": "Test e-postası gönderilemedi",
+
+  "table.header.name": "Şablon adı",
+  "table.header.templateReferenceId": "Şablon referans kimliği",
+  "table.header.createdAt": "Oluşturulma tarihi",
+  "table.header.updatedAt": "Güncellenme tarihi",
+  "table.header.coreEmailType": "Çekirdek e-posta adı",
+
+  "table.action.edit": "Düzenle",
+  "table.action.delete": "Sil",
+
+  "emailTypes.core.tab.label": "Çekirdek e-postalar",
+  "emailTypes.custom.tab.label": "Özel e-postalar",
+
+  "emailTypes.user-address-confirmation": "Kullanıcı adresi doğrulama",
+  "emailTypes.reset-password": "Şifre sıfırlama",
+  "user-address-confirmation": "Kullanıcı adresi doğrulama",
+  "reset-password": "Şifre sıfırlama",
+
+  "customTable.addDesign": "Yeni tasarım eklemek için tıklayın",
+  "customTable.noDesigns": "Henüz kullanılabilir tasarım yok",
+
+  "error.noReferenceId.title": "Referans kimliği gerekli",
+  "error.noReferenceId.message": "Lütfen e-posta şablonu için bir referans kimliği girin",
+
+  "designer.tab.history": "Geçmiş",
+  "versionHistory.noVersions": "Sürüm geçmişi bulunmuyor",
+  "error.loadingVersions": "Sürüm geçmişi yüklenirken bir hata oluştu",
+  "error.restoreVersion": "Sürüm geri yüklenirken bir hata oluştu",
+  "error.deleteVersion": "Sürüm silinirken bir hata oluştu",
+  "success.versionRestored": "Sürüm başarıyla geri yüklendi",
+  "success.versionDeleted": "Sürüm başarıyla silindi",
+  "confirm.restoreVersion.message": "Bu sürümü geri yüklemek istediğinizden emin misiniz? Mevcut değişiklikleriniz yeni bir sürüm olarak kaydedilecek.",
+  "confirm.deleteVersion.message": "Bu sürümü silmek istediğinizden emin misiniz?",
+  "tooltip.restore": "Bu sürüme geri yükle",
+  "tooltip.version.delete": "Bu sürümü sil",
+  "tooltip.compare": "Geçerli sürümle karşılaştır",
+  "loading": "Yükleniyor...",
+  "close": "Kapat",
+
+  "versionCompare.title": "Sürümleri karşılaştır",
+  "versionCompare.comparing": "#{old} numaralı sürüm geçerli sürümle karşılaştırılıyor",
+  "versionCompare.tab.design": "Tasarım (JSON)",
+  "versionCompare.tab.html": "HTML",
+  "versionCompare.tab.text": "Metin",
+  "versionCompare.tab.subject": "Konu",
+  "versionCompare.tab.name": "Ad"
+}
