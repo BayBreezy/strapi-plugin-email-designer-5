@@ -1,0 +1,57 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write # npm trusted publishing (OIDC), which also generates provenance
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    # trusted publishing only works on GitHub-hosted runners
+    runs-on: ubuntu-latest
+    env:
+      # Do not run the git hooks on the release commit
+      HUSKY: 0
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.x
+
+      # no registry-url: it writes an .npmrc that expects a token
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Type-check server
+        run: bun run test:ts:back
+
+      - name: Type-check admin
+        run: bun run test:ts:front
+
+      - name: Build
+        run: bun run build
+
+      - name: Verify package
+        run: bun run verify
+
+      - name: Release
+        run: bunx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

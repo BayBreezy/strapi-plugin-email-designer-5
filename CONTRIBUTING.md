@@ -253,7 +253,7 @@ git rebase --continue
 3. **PR Guidelines**
    - One feature/fix per PR
    - Keep PRs focused and reasonably sized
-   - Update CHANGELOG.md with your changes
+   - Use a [Conventional Commits](https://www.conventionalcommits.org/) PR title and commit messages (CHANGELOG.md is generated on release)
    - Ensure all checks pass
    - Request review from maintainers
 
@@ -302,21 +302,24 @@ If your change affects user-facing behavior, update [README.md](README.md):
 
 ## Release Process
 
-The maintainers handle releases using:
+Releases are automated with [semantic-release](https://github.com/semantic-release/semantic-release). Every push to `main` runs the [Release workflow](.github/workflows/release.yml), which:
 
-```bash
-bun run release
-```
+1. Type-checks, builds and verifies the plugin
+2. Works out the next version from the commit messages since the last release
+3. Updates `CHANGELOG.md` and `package.json`, and commits them back to `main`
+4. Publishes to npm through [trusted publishing](https://docs.npmjs.com/trusted-publishers) (no npm token, with provenance)
+5. Tags the release and creates a GitHub release
 
-This:
+The commit type decides the version bump:
 
-1. Formats code
-2. Builds the plugin
-3. Generates changelog
-4. Publishes to npm
-5. Pushes tags to GitHub
+| Commit                                              | Release |
+| --------------------------------------------------- | ------- |
+| `fix: ...`                                          | patch   |
+| `feat: ...`                                         | minor   |
+| `feat!: ...` or a `BREAKING CHANGE:` footer         | major   |
+| `docs:`, `chore:`, `ci:`, `style:`, `refactor:` ... | none    |
 
-New features and fixes will be included in the next release.
+Nobody needs to run a release by hand. New features and fixes are published as soon as they are merged into `main`.
 
 ## Questions?
 

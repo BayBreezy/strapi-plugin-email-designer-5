@@ -10,7 +10,7 @@
   "homepage": "https://github.com/BayBreezy/strapi-plugin-email-designer-5.git",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/BayBreezy/strapi-plugin-email-designer-5.git"
+    "url": "git+https://github.com/BayBreezy/strapi-plugin-email-designer-5.git"
   },
   "maintainers": [
     {
@@ -63,7 +63,6 @@
     "format": "bunx prettier --write .",
     "format:check": "bunx prettier -c .",
     "prepare": "husky",
-    "release": "bun run format && bun run build && bun run verify && changelogen --release && npm publish && git push --follow-tags",
     "test:ts:back": "bunx tsc -p server/tsconfig.json --noEmit",
     "test:ts:front": "bunx tsc -p admin/tsconfig.json --noEmit",
     "verify": "strapi-plugin verify",
@@ -71,8 +70,8 @@
     "watch:link": "strapi-plugin watch:link"
   },
   "dependencies": {
-    "@strapi/design-system": "^2.2.4",
-    "@strapi/icons": "^2.2.4",
+    "@strapi/design-system": "^2.4.0",
+    "@strapi/icons": "^2.4.0",
     "dayjs": "^1.11.23",
     "decode-html": "^2.0.0",
     "defu": "^6.1.7",
@@ -89,27 +88,29 @@
     "yup": "^1.7.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.2.3",
-    "@commitlint/config-conventional": "^21.2.3",
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+    "@semantic-release/changelog": "^7.0.0",
+    "@semantic-release/git": "^11.0.1",
     "@strapi/sdk-plugin": "^6.1.1",
-    "@strapi/strapi": "^5.56.0",
-    "@strapi/typescript-utils": "^5.56.0",
+    "@strapi/strapi": "^5.64.0",
+    "@strapi/typescript-utils": "^5.64.0",
     "@types/html-to-text": "^9.0.4",
-    "@types/lodash": "^4.17.25",
+    "@types/lodash": "^4.17.28",
     "@types/mustache": "^4.2.6",
     "@types/nodemailer": "^8.0.2",
-    "@types/react": "^18.3.31",
+    "@types/react": "^18.3.32",
     "@types/react-dom": "^18.3.7",
     "@types/react-email-editor": "^1.7.0",
-    "changelogen": "^0.6.2",
     "husky": "^9.1.7",
-    "lint-staged": "^17.6.0",
-    "prettier": "^3.9.9",
+    "lint-staged": "^17.6.2",
+    "prettier": "^3.10.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.6",
-    "styled-components": "^6.5.3",
+    "semantic-release": "^25.0.9",
+    "styled-components": "^6.7.0",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
@@ -119,6 +120,9 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "styled-components": "^6.1.13"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "strapi": {
     "kind": "plugin",
