@@ -1,5 +1,17 @@
 # Changelog
 
+# [0.1.0](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.10...v0.1.0) (2026-11-27)
+
+
+### Bug Fixes
+
+* **email:** validate email addresses case-insensitively ([dad0a57](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/dad0a577ab3f4cf8fce174d04860073956b1710c))
+
+
+### Features
+
+* add ar and tr translations ([3544a69](https://github.com/BayBreezy/strapi-plugin-email-designer-5/commit/3544a697c24d3e902cbd4dbfadbeefe112423293))
+
 ## v0.0.10
 
 [compare changes](https://github.com/BayBreezy/strapi-plugin-email-designer-5/compare/v0.0.9...v0.0.10)
